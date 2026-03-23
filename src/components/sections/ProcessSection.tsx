@@ -18,7 +18,7 @@ const STEPS = [
         <path d="M4 22h20" stroke="#E00505" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
-    iconBg: 'rgba(224, 5, 5, 0.10)',
+    iconBg: 'bg-brand-red/10',
     title: 'TÉLÉCHARGEZ',
     description: "Créez votre compte ASMI en quelques minutes sur iOS ou Android.",
   },
@@ -30,7 +30,7 @@ const STEPS = [
         <path d="M9 9h10M9 14h10M9 19h6" stroke="#E00505" strokeWidth="2" strokeLinecap="round" />
       </svg>
     ),
-    iconBg: 'rgba(224, 5, 5, 0.16)',
+    iconBg: 'bg-brand-red/[0.16]',
     title: 'SOUMETTEZ',
     description: "Remplissez le formulaire de transfert avec les détails du bénéficiaire.",
   },
@@ -42,7 +42,7 @@ const STEPS = [
         <path d="M9 14l4 4 6-7" stroke="#E00505" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
-    iconBg: 'rgba(224, 5, 5, 0.20)',
+    iconBg: 'bg-brand-red/20',
     title: 'RECEVEZ',
     description: "Votre transfert est validé et les fonds sont envoyés immédiatement.",
   },
@@ -52,23 +52,14 @@ const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function ProcessSection() {
   return (
-    <section id="process" style={{ background: '#FFFFFF', padding: '96px 0' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+    <section id="process" className="bg-white section-padding">
+      <div className="container">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          style={{
-            fontFamily: 'var(--font-karst)',
-            fontWeight: 700,
-            fontSize: '36px',
-            letterSpacing: '-1.8px',
-            textTransform: 'uppercase',
-            color: '#1A1C1C',
-            textAlign: 'center',
-            marginBottom: '64px',
-          }}
+          className="section-title mb-16"
         >
           COMMENT ÇA MARCHE ?
         </motion.h2>
@@ -78,83 +69,27 @@ export default function ProcessSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '32px',
-            justifyItems: 'center',
-          }}
-          className="process-grid"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {STEPS.map((s) => (
             <motion.div
               key={s.step}
               variants={fadeInUp}
-              style={{
-                background: '#FFFFFF',
-                border: '1px solid #F4F4F5',
-                borderRadius: '16px',
-                padding: '41px',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                textAlign: 'center',
-                width: '100%',
-              }}
+              className="bg-white border border-brand-gray-border rounded-card p-[41px] flex flex-col items-center text-center"
             >
-              <div
-                style={{
-                  width: '64px',
-                  height: '64px',
-                  borderRadius: '9999px',
-                  background: s.iconBg,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginBottom: '24px',
-                  flexShrink: 0,
-                }}
-              >
-                {s.icon}
-              </div>
+              <div className={`step-icon ${s.iconBg}`}>{s.icon}</div>
 
-              <h3
-                style={{
-                  fontFamily: 'var(--font-karst)',
-                  fontWeight: 700,
-                  fontSize: '20px',
-                  textTransform: 'uppercase',
-                  color: '#1A1C1C',
-                  marginBottom: '16px',
-                }}
-              >
+              <h3 className="font-karst font-bold text-xl uppercase text-brand-text-dark mb-4">
                 {s.title}
               </h3>
 
-              <p
-                style={{
-                  fontFamily: 'var(--font-karst)',
-                  fontWeight: 300,
-                  fontSize: '14px',
-                  lineHeight: '20px',
-                  color: '#71717A',
-                  textAlign: 'center',
-                }}
-              >
+              <p className="font-karst font-light text-sm leading-5 text-brand-gray-text text-center">
                 {s.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .process-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -31,23 +31,14 @@ const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function TestimonialsSection() {
   return (
-    <section style={{ background: '#FFFFFF', padding: '96px 0' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+    <section className="bg-white section-padding">
+      <div className="container">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          style={{
-            fontFamily: 'var(--font-karst)',
-            fontWeight: 700,
-            fontSize: '36px',
-            letterSpacing: '-2.4px',
-            textTransform: 'uppercase',
-            color: '#1A1C1C',
-            textAlign: 'center',
-            marginBottom: '64px',
-          }}
+          className="section-title tracking-[-2.4px] mb-16"
         >
           ILS NOUS FONT CONFIANCE
         </motion.h2>
@@ -57,76 +48,40 @@ export default function TestimonialsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}
-          className="testimonials-grid"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {TESTIMONIALS.map((t) => (
             <motion.div
               key={t.author}
               variants={scaleIn}
-              style={{ background: '#F9F9F9', borderRadius: '16px', padding: '40px', position: 'relative' }}
+              className="bg-brand-gray-light rounded-card p-10 relative"
             >
+              {/* Guillemet décoratif */}
               <span
                 aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  top: '-16px',
-                  left: '16px',
-                  fontSize: '96px',
-                  color: '#0606EF',
-                  opacity: 0.1,
-                  fontFamily: 'serif',
-                  lineHeight: 1,
-                  userSelect: 'none',
-                }}
+                className="absolute -top-4 left-4 text-[96px] text-brand-blue/10 font-serif leading-none select-none"
               >
                 &ldquo;
               </span>
 
-              <div style={{ marginBottom: '16px' }}>
+              {/* Étoiles */}
+              <div className="mb-4">
                 {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} style={{ color: '#E00505', fontSize: '14px' }} aria-hidden="true">★</span>
+                  <span key={i} className="text-brand-red text-sm" aria-hidden="true">★</span>
                 ))}
               </div>
 
-              <p
-                style={{
-                  fontFamily: 'var(--font-karst)',
-                  fontWeight: 300,
-                  fontSize: '14px',
-                  lineHeight: '20px',
-                  color: '#3F3F46',
-                  marginBottom: '16px',
-                }}
-              >
+              <p className="font-karst font-light text-sm leading-5 text-brand-text-body mb-4">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              <p
-                style={{
-                  fontFamily: 'var(--font-karst)',
-                  fontWeight: 700,
-                  fontSize: '12px',
-                  letterSpacing: '0.6px',
-                  textTransform: 'uppercase',
-                  color: '#1A1C1C',
-                  margin: 0,
-                }}
-              >
+              <p className="font-karst font-bold text-xs tracking-[0.6px] uppercase text-brand-text-dark m-0">
                 — {t.author}
               </p>
             </motion.div>
           ))}
         </motion.div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .testimonials-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

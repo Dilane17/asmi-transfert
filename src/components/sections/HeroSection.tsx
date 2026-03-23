@@ -21,65 +21,29 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
     <>
       {/* ── DESKTOP ───────────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden hidden md:block"
-        style={{
-          height: '1128px',
-          background: 'linear-gradient(166.24deg, #E00505 55%, #F9F9F9 55.1%)',
-          paddingTop: '72px',
-        }}
+        className="relative overflow-hidden hidden md:block h-[1128px] pt-[72px]"
+        style={{ background: 'linear-gradient(166.24deg, #E00505 55%, #F9F9F9 55.1%)' }}
       >
-        {/* Décoratif 1 */}
+        {/* Décoratif 1 — rectangle */}
         <div
           aria-hidden="true"
-          style={{
-            position: 'absolute',
-            left: '-151px',
-            top: '-119px',
-            width: '526px',
-            height: '678px',
-            background: 'rgba(255,255,255,0.05)',
-            transform: 'rotate(-15deg)',
-            pointerEvents: 'none',
-          }}
+          className="absolute -left-[151px] -top-[119px] w-[526px] h-[678px] bg-white/5 pointer-events-none rotate-[-15deg]"
         />
 
-        {/* Décoratif 2 */}
+        {/* Décoratif 2 — cercle */}
         <div
           aria-hidden="true"
-          style={{
-            position: 'absolute',
-            bottom: '10px',
-            left: '22.75%',
-            right: '52.75%',
-            width: '256px',
-            height: '256px',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '9999px',
-            transform: 'rotate(-15deg)',
-            pointerEvents: 'none',
-          }}
+          className="absolute bottom-[10px] left-[22.75%] right-[52.75%] w-[256px] h-[256px] bg-white/5 rounded-pill pointer-events-none rotate-[-15deg]"
         />
 
-        {/* ── Colonne gauche ─────────────────────────────────────────── */}
-        <div style={{ position: 'absolute', inset: '0 45% 0 0', paddingLeft: '96px' }}>
+        {/* Colonne gauche — texte */}
+        <div className="hero-text-col">
           <motion.h1
             variants={fadeInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            style={{
-              position: 'absolute',
-              top: '65px',
-              left: '96px',
-              fontFamily: 'var(--font-karst)',
-              fontWeight: 700,
-              fontSize: '96px',
-              lineHeight: '96px',
-              letterSpacing: '-4.8px',
-              color: '#FFFFFF',
-              textTransform: 'uppercase',
-              whiteSpace: 'pre-line',
-            }}
+            className="absolute top-[65px] left-[96px] font-karst font-bold text-[96px] leading-[96px] tracking-[-4.8px] text-white uppercase whitespace-pre-line"
           >
             {`ENVOYEZ.\nRECEVEZ.\nEN TOUTE\nSÉCURITÉ.`}
           </motion.h1>
@@ -90,17 +54,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             whileInView="visible"
             viewport={VIEWPORT}
             transition={{ delay: 0.15 }}
-            style={{
-              position: 'absolute',
-              top: '460px',
-              left: '105px',
-              fontFamily: 'var(--font-karst)',
-              fontWeight: 300,
-              fontSize: '20px',
-              lineHeight: '28px',
-              color: 'rgba(255,255,255,0.9)',
-              maxWidth: '448px',
-            }}
+            className="absolute top-[460px] left-[105px] font-karst font-light text-xl leading-7 text-white/90 max-w-[448px]"
           >
             La plateforme de transfert de fonds nouvelle génération pour l&apos;Afrique et
             l&apos;Europe. Rapide, transparent et ultra-sécurisé.
@@ -112,91 +66,32 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             whileInView="visible"
             viewport={VIEWPORT}
             transition={{ delay: 0.3 }}
-            style={{
-              position: 'absolute',
-              top: '581px',
-              left: '105px',
-              display: 'flex',
-              gap: '16px',
-            }}
+            className="absolute top-[581px] left-[105px] flex gap-4"
           >
-            <button
-              type="button"
-              style={{
-                width: '246px',
-                height: '56px',
-                background: '#FFFFFF',
-                color: '#E00505',
-                fontFamily: 'var(--font-karst)',
-                fontWeight: 700,
-                fontSize: '14px',
-                letterSpacing: '1.4px',
-                textTransform: 'uppercase',
-                padding: '18px 40px',
-                borderRadius: '12px',
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)',
-                transition: 'transform 150ms, filter 150ms',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.filter = 'brightness(1.05)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.filter = 'none'; }}
-              onMouseDown={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
-            >
+            <button type="button" className="btn-hero-white">
               Télécharger l&apos;app
             </button>
-
-            <button
-              type="button"
-              style={{
-                width: '203px',
-                height: '56px',
-                background: 'transparent',
-                color: '#FFFFFF',
-                fontFamily: 'var(--font-karst)',
-                fontWeight: 700,
-                fontSize: '14px',
-                letterSpacing: '1.4px',
-                textTransform: 'uppercase',
-                padding: '18px 40px',
-                borderRadius: '12px',
-                border: '2px solid rgba(255,255,255,0.4)',
-                backdropFilter: 'blur(2px)',
-                cursor: 'pointer',
-                transition: 'opacity 200ms',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.8'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
-            >
+            <button type="button" className="btn-secondary-hero">
               Nos services
             </button>
           </motion.div>
         </div>
 
-        {/* ── Colonne droite — mockup ────────────────────────────────── */}
+        {/* Colonne droite — mockup */}
         <motion.div
           variants={fadeInRight}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
           transition={{ delay: 0.2 }}
-          style={{
-            position: 'absolute',
-            left: '426px',
-            top: '-16px',
-            width: '930px',
-            height: '930px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
+          className="hero-image-col"
         >
-          <div style={{ transform: 'rotate(-11deg)', flexShrink: 0, position: 'relative', width: '794px', height: '794px' }}>
+          <div className="relative w-[794px] h-[794px] shrink-0 rotate-[-11deg]">
             <Image
               src={mockupImage || '/images/hero-mockup.png'}
               alt="ASMI Transfert App"
               fill
-              style={{ objectFit: 'cover', pointerEvents: 'none' }}
+              className="object-cover pointer-events-none"
               priority
             />
           </div>
@@ -205,26 +100,16 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
 
       {/* ── MOBILE ────────────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden flex flex-col md:hidden"
-        style={{ minHeight: '100vh', background: 'linear-gradient(180deg, #E00505 60%, #F9F9F9 60.1%)' }}
+        className="relative overflow-hidden flex flex-col md:hidden min-h-screen"
+        style={{ background: 'linear-gradient(180deg, #E00505 60%, #F9F9F9 60.1%)' }}
       >
-        <div style={{ padding: '100px 24px 40px', width: '100%' }}>
+        <div className="pt-[100px] px-6 pb-10 w-full">
           <motion.h1
             variants={fadeInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            style={{
-              fontFamily: 'var(--font-karst)',
-              fontWeight: 700,
-              fontSize: '56px',
-              lineHeight: '60px',
-              letterSpacing: '-2.8px',
-              color: '#FFFFFF',
-              textTransform: 'uppercase',
-              whiteSpace: 'pre-line',
-              marginBottom: '24px',
-            }}
+            className="font-karst font-bold text-[56px] leading-[60px] tracking-[-2.8px] text-white uppercase whitespace-pre-line mb-6"
           >
             {`ENVOYEZ.\nRECEVEZ.\nEN TOUTE\nSÉCURITÉ.`}
           </motion.h1>
@@ -235,14 +120,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             whileInView="visible"
             viewport={VIEWPORT}
             transition={{ delay: 0.15 }}
-            style={{
-              fontFamily: 'var(--font-karst)',
-              fontWeight: 300,
-              fontSize: '16px',
-              lineHeight: '24px',
-              color: 'rgba(255,255,255,0.9)',
-              marginBottom: '32px',
-            }}
+            className="font-karst font-light text-base leading-6 text-white/90 mb-8"
           >
             La plateforme de transfert de fonds nouvelle génération pour l&apos;Afrique et
             l&apos;Europe. Rapide, transparent et ultra-sécurisé.
@@ -254,58 +132,34 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             whileInView="visible"
             viewport={VIEWPORT}
             transition={{ delay: 0.3 }}
-            style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
+            className="flex flex-col gap-3"
           >
             <button
               type="button"
-              style={{
-                width: '100%',
-                height: '56px',
-                background: '#FFFFFF',
-                color: '#E00505',
-                fontFamily: 'var(--font-karst)',
-                fontWeight: 700,
-                fontSize: '14px',
-                letterSpacing: '1.4px',
-                textTransform: 'uppercase',
-                borderRadius: '12px',
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)',
-              }}
+              className="btn-hero-white w-full"
+              style={{ width: '100%' }}
             >
               Télécharger l&apos;app
             </button>
             <button
               type="button"
-              style={{
-                width: '100%',
-                height: '56px',
-                background: 'transparent',
-                color: '#FFFFFF',
-                fontFamily: 'var(--font-karst)',
-                fontWeight: 700,
-                fontSize: '14px',
-                letterSpacing: '1.4px',
-                textTransform: 'uppercase',
-                borderRadius: '12px',
-                border: '2px solid rgba(255,255,255,0.4)',
-                backdropFilter: 'blur(2px)',
-                cursor: 'pointer',
-              }}
+              className="btn-secondary-hero w-full"
+              style={{ width: '100%' }}
             >
               Nos services
             </button>
           </motion.div>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '48px' }}>
-          <div style={{ transform: 'rotate(-11deg)', position: 'relative', width: '280px', height: '280px' }}>
+        {/* Mockup mobile */}
+        <div className="flex justify-center pb-12">
+          <div className="relative w-[280px] h-[280px] rotate-[-11deg]">
             <Image
               src={mockupImage || '/images/hero-mockup.png'}
               alt="ASMI Transfert App"
               fill
-              style={{ objectFit: 'cover', pointerEvents: 'none' }}
+              className="object-cover pointer-events-none"
+              loading="lazy"
             />
           </div>
         </div>

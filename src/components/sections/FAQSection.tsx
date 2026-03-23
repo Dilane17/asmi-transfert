@@ -36,35 +36,26 @@ const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function FAQSection() {
   const [activeCategory, setActiveCategory] = useState<Category>('Général');
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex]           = useState<number | null>(null);
 
   const items = FAQ_DATA[activeCategory];
 
   return (
-    <section id="faq" style={{ background: '#F9F9F9', padding: '96px 0' }}>
-      <div style={{ maxWidth: '896px', margin: '0 auto', padding: '0 40px' }}>
+    <section id="faq" className="bg-brand-gray-light section-padding">
+      <div className="max-w-[896px] mx-auto px-10">
+
         <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
         >
-          <h2
-            style={{
-              fontFamily: 'var(--font-karst)',
-              fontWeight: 700,
-              fontSize: '36px',
-              letterSpacing: '-1.8px',
-              textTransform: 'uppercase',
-              color: '#1A1C1C',
-              textAlign: 'center',
-            }}
-          >
+          <h2 className="font-karst font-bold text-[36px] tracking-[-1.8px] uppercase text-brand-text-dark text-center">
             FOIRE AUX QUESTIONS
           </h2>
 
           {/* Filtres */}
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', margin: '32px 0', flexWrap: 'wrap' }}>
+          <div className="flex justify-center gap-4 mt-8 mb-8 flex-wrap">
             {CATEGORIES.map((cat) => {
               const isActive = cat === activeCategory;
               return (
@@ -72,20 +63,11 @@ export default function FAQSection() {
                   key={cat}
                   type="button"
                   onClick={() => { setActiveCategory(cat); setOpenIndex(null); }}
-                  style={{
-                    fontFamily: 'var(--font-karst)',
-                    fontWeight: 700,
-                    fontSize: '12px',
-                    letterSpacing: '1.2px',
-                    textTransform: 'uppercase',
-                    borderRadius: '9999px',
-                    padding: '10px 24px',
-                    border: isActive ? 'none' : '1px solid #F4F4F5',
-                    background: isActive ? '#E00505' : '#FFFFFF',
-                    color: isActive ? '#FFFFFF' : '#71717A',
-                    cursor: 'pointer',
-                    transition: 'all 200ms',
-                  }}
+                  className={`font-karst font-bold text-xs tracking-[1.2px] uppercase rounded-pill px-6 py-[10px] cursor-pointer transition-all duration-200 ${
+                    isActive
+                      ? 'bg-brand-red text-white border-0'
+                      : 'bg-white text-brand-gray-text border border-brand-gray-border'
+                  }`}
                 >
                   {cat}
                 </button>
@@ -100,7 +82,7 @@ export default function FAQSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
+          className="flex flex-col gap-3"
         >
           {items.map((item, index) => {
             const isOpen = openIndex === index;
@@ -108,53 +90,19 @@ export default function FAQSection() {
               <motion.div
                 key={`${activeCategory}-${index}`}
                 variants={fadeInUp}
-                style={{
-                  background: '#FFFFFF',
-                  border: isOpen ? '1px solid rgba(224, 5, 5, 0.2)' : '1px solid #F4F4F5',
-                  borderRadius: '12px',
-                  boxShadow: isOpen ? '0px 10px 15px -3px #fef2f2' : 'none',
-                  transition: 'border-color 300ms, box-shadow 300ms',
-                  overflow: 'hidden',
-                }}
+                className={`faq-item ${isOpen ? 'open' : ''}`}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: '25px',
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    gap: '16px',
-                  }}
+                  className="w-full flex justify-between items-center p-[25px] bg-transparent border-0 cursor-pointer text-left gap-4"
                 >
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-karst)',
-                      fontWeight: 700,
-                      fontSize: '15px',
-                      color: isOpen ? '#E00505' : '#1A1C1C',
-                      transition: 'color 300ms',
-                    }}
-                  >
+                  <span className={`font-karst font-bold text-[15px] transition-colors duration-300 ${isOpen ? 'text-brand-red' : 'text-brand-text-dark'}`}>
                     {item.q}
                   </span>
                   <span
-                    style={{
-                      fontFamily: 'var(--font-karst)',
-                      fontWeight: 700,
-                      fontSize: '22px',
-                      color: isOpen ? '#E00505' : '#1A1C1C',
-                      flexShrink: 0,
-                      transition: 'color 300ms',
-                      lineHeight: 1,
-                    }}
+                    className={`font-karst font-bold text-[22px] shrink-0 leading-none transition-colors duration-300 ${isOpen ? 'text-brand-red' : 'text-brand-text-dark'}`}
                     aria-hidden="true"
                   >
                     {isOpen ? '−' : '+'}
@@ -162,20 +110,11 @@ export default function FAQSection() {
                 </button>
 
                 <div
-                  style={{ maxHeight: isOpen ? '300px' : '0', overflow: 'hidden', transition: 'max-height 300ms ease' }}
+                  className="overflow-hidden transition-all duration-300 ease-in-out"
+                  style={{ maxHeight: isOpen ? '300px' : '0' }}
                   aria-hidden={!isOpen}
                 >
-                  <p
-                    style={{
-                      fontFamily: 'var(--font-karst)',
-                      fontWeight: 300,
-                      fontSize: '14px',
-                      lineHeight: '22px',
-                      color: '#71717A',
-                      padding: '0 25px 25px',
-                      margin: 0,
-                    }}
-                  >
+                  <p className="font-karst font-light text-sm leading-[22px] text-brand-gray-text px-[25px] pb-[25px] m-0">
                     {item.a}
                   </p>
                 </div>

@@ -11,37 +11,33 @@ import Link from 'next/link';
 import Button from '@/components/ui/Button';
 
 const NAV_LINKS = [
-  { label: 'Accueil', href: '/', active: true },
-  { label: 'Services', href: '#services', active: false },
-  { label: 'Comment ça marche', href: '#process', active: false },
-  { label: 'Sécurité', href: '#security', active: false },
-  { label: 'FAQ', href: '#faq', active: false },
+  { label: 'Accueil',          href: '/',        active: true  },
+  { label: 'Services',         href: '#services', active: false },
+  { label: 'Comment ça marche',href: '#process',  active: false },
+  { label: 'Sécurité',         href: '#security', active: false },
+  { label: 'FAQ',              href: '#faq',      active: false },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled,  setScrolled]  = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-[6px] border-b border-brand-gray-border transition-shadow duration-300"
-      style={{ boxShadow: scrolled ? '0 4px 20px rgba(0,0,0,0.08)' : 'none' }}
+      className={`fixed top-0 left-0 right-0 z-50 h-[69px] bg-white/90 backdrop-blur-[6px] border-b border-brand-gray-border transition-shadow duration-200 ${scrolled ? 'shadow-navbar' : ''}`}
     >
-      <div className="container flex items-center justify-between h-[69px]">
+      <div className="container flex items-center justify-between h-full">
+
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0">
-          <span
-            className="font-[family-name:var(--font-karst)] font-bold text-[24px] leading-none"
-            style={{ color: '#1a1c1c' }}
-          >
-            ASMI{' '}
-            <span className="text-brand-red">Transfert</span>
+        <Link href="/" className="shrink-0">
+          <span className="font-karst font-bold text-2xl leading-none text-brand-text-dark">
+            ASMI <span className="text-brand-red">Transfert</span>
           </span>
         </Link>
 
@@ -52,8 +48,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               aria-current={link.active ? 'page' : undefined}
-              className="font-[family-name:var(--font-karst)] font-bold text-[14px] tracking-[-0.35px] transition-colors duration-200 hover:text-brand-red"
-              style={{ color: link.active ? '#E00505' : '#71717A' }}
+              className="nav-link"
             >
               {link.label}
             </Link>
@@ -71,31 +66,16 @@ export default function Navbar() {
         <button
           type="button"
           className="md:hidden flex flex-col gap-[5px] p-2 cursor-pointer"
-          onClick={() => setMenuOpen((prev) => !prev)}
+          onClick={() => setMenuOpen((v) => !v)}
           aria-label="Ouvrir le menu"
           aria-expanded={menuOpen}
         >
-          <span
-            className="block w-6 h-[2px] transition-all duration-300"
-            style={{
-              backgroundColor: '#E00505',
-              transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none',
-            }}
-          />
-          <span
-            className="block w-6 h-[2px] transition-all duration-300"
-            style={{
-              backgroundColor: '#E00505',
-              opacity: menuOpen ? 0 : 1,
-            }}
-          />
-          <span
-            className="block w-6 h-[2px] transition-all duration-300"
-            style={{
-              backgroundColor: '#E00505',
-              transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none',
-            }}
-          />
+          <span className="block w-6 h-0.5 bg-brand-red transition-all duration-300"
+            style={{ transform: menuOpen ? 'translateY(7px) rotate(45deg)' : 'none' }} />
+          <span className="block w-6 h-0.5 bg-brand-red transition-all duration-300"
+            style={{ opacity: menuOpen ? 0 : 1 }} />
+          <span className="block w-6 h-0.5 bg-brand-red transition-all duration-300"
+            style={{ transform: menuOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }} />
         </button>
       </div>
 
@@ -109,9 +89,9 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
+              aria-current={link.active ? 'page' : undefined}
               onClick={() => setMenuOpen(false)}
-              className="font-[family-name:var(--font-karst)] font-bold text-[18px] transition-colors duration-200 hover:text-brand-red"
-              style={{ color: link.active ? '#E00505' : '#71717A' }}
+              className="nav-link text-lg"
             >
               {link.label}
             </Link>

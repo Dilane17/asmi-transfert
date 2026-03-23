@@ -6,7 +6,6 @@
 
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, scaleIn } from '@/lib/animations';
 
@@ -30,118 +29,16 @@ const SERVICES = [
 
 const VIEWPORT = { once: true, margin: '-100px' };
 
-function ServiceCard({ service }: { service: typeof SERVICES[number] }) {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.div
-      variants={scaleIn}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      style={{
-        background: '#FFFFFF',
-        border: hovered ? '1px solid rgba(224, 5, 5, 0.2)' : '1px solid #F4F4F5',
-        borderRadius: '16px',
-        padding: '41px',
-        position: 'relative',
-        overflow: 'hidden',
-        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
-        boxShadow: hovered
-          ? '0px 20px 25px -5px rgba(0,0,0,0.08), 0px 8px 10px -6px rgba(0,0,0,0.04)'
-          : 'none',
-        transition: 'transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease',
-      }}
-    >
-      <span
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          right: '8px',
-          bottom: '16px',
-          fontFamily: 'var(--font-karst)',
-          fontWeight: 700,
-          fontSize: '96px',
-          color: '#FAFAFA',
-          pointerEvents: 'none',
-          userSelect: 'none',
-          lineHeight: 1,
-        }}
-      >
-        {service.number}
-      </span>
-
-      <h3
-        style={{
-          fontFamily: 'var(--font-karst)',
-          fontWeight: 700,
-          fontSize: '24px',
-          lineHeight: '32px',
-          color: '#1A1C1C',
-          marginBottom: '15px',
-        }}
-      >
-        {service.title}
-      </h3>
-
-      <p
-        style={{
-          fontFamily: 'var(--font-karst)',
-          fontWeight: 300,
-          fontSize: '14px',
-          lineHeight: '22.75px',
-          color: '#71717A',
-          marginBottom: '16px',
-        }}
-      >
-        {service.description}
-      </p>
-
-      <a
-        href="#"
-        style={{
-          fontFamily: 'var(--font-karst)',
-          fontWeight: 700,
-          fontSize: '12px',
-          letterSpacing: '1.2px',
-          textTransform: 'uppercase',
-          color: '#0606EF',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          textDecoration: 'none',
-          transition: 'opacity 200ms',
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.opacity = '0.8')}
-        onMouseLeave={(e) => (e.currentTarget.style.opacity = '1')}
-      >
-        EN SAVOIR PLUS
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M1 7h12M7 1l6 6-6 6" stroke="#0606EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      </a>
-    </motion.div>
-  );
-}
-
 export default function ServicesSection() {
   return (
-    <section id="services" style={{ background: '#F9F9F9', padding: '96px 0' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
+    <section id="services" className="bg-brand-gray-light section-padding">
+      <div className="container">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          style={{
-            fontFamily: 'var(--font-karst)',
-            fontWeight: 700,
-            fontSize: '36px',
-            letterSpacing: '-1.8px',
-            textTransform: 'uppercase',
-            color: '#1A1C1C',
-            textAlign: 'center',
-            marginBottom: '48px',
-          }}
+          className="section-title mb-12"
         >
           CHOISISSEZ VOTRE OPÉRATEUR DE TRANSFERT
         </motion.h2>
@@ -151,26 +48,39 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '32px',
-          }}
-          className="services-grid"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
         >
           {SERVICES.map((service) => (
-            <ServiceCard key={service.number} service={service} />
+            <motion.div key={service.number} variants={scaleIn} className="card">
+              {/* Numéro filigrane */}
+              <span
+                aria-hidden="true"
+                className="absolute right-2 bottom-4 font-karst font-bold text-[96px] text-[#FAFAFA] pointer-events-none select-none leading-none"
+              >
+                {service.number}
+              </span>
+
+              <h3 className="font-karst font-bold text-2xl leading-8 text-brand-text-dark mb-[15px]">
+                {service.title}
+              </h3>
+
+              <p className="font-karst font-light text-sm leading-[22.75px] text-brand-gray-text mb-4">
+                {service.description}
+              </p>
+
+              <a
+                href="#"
+                className="font-karst font-bold text-xs tracking-[1.2px] uppercase text-brand-blue flex items-center gap-2 no-underline transition-opacity duration-200 hover:opacity-80"
+              >
+                EN SAVOIR PLUS
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                  <path d="M1 7h12M7 1l6 6-6 6" stroke="#0606EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </a>
+            </motion.div>
           ))}
         </motion.div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .services-grid {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }
