@@ -45,8 +45,8 @@ npm run dev
 
 ## 🗺️ Sections implémentées
 - [x] Navbar — ✅ implémenté le 23/03/2026
-- [ ] Hero Section
-- [ ] Stats Section
+- [x] Hero Section — ✅ implémenté le 23/03/2026
+- [x] Stats Section — ✅ implémenté le 23/03/2026
 - [ ] Services Section
 - [ ] Process Section
 - [ ] Security Section
