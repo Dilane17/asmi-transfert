@@ -46,11 +46,12 @@ export default function Navbar() {
         </Link>
 
         {/* Liens desktop */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav aria-label="Navigation principale" className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
+              aria-current={link.active ? 'page' : undefined}
               className="font-[family-name:var(--font-karst)] font-bold text-[14px] tracking-[-0.35px] transition-colors duration-200 hover:text-brand-red"
               style={{ color: link.active ? '#E00505' : '#71717A' }}
             >
@@ -71,7 +72,8 @@ export default function Navbar() {
           type="button"
           className="md:hidden flex flex-col gap-[5px] p-2 cursor-pointer"
           onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Menu"
+          aria-label="Ouvrir le menu"
+          aria-expanded={menuOpen}
         >
           <span
             className="block w-6 h-[2px] transition-all duration-300"
