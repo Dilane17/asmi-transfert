@@ -4,6 +4,11 @@
  * @figma https://www.figma.com/design/VlZmkzRjZZ2yCkIfMHpjnT/ASMI?node-id=1:75
  */
 
+'use client';
+
+import { motion } from 'framer-motion';
+import { fadeInUp, staggerContainer } from '@/lib/animations';
+
 const STEPS = [
   {
     step: 1,
@@ -43,11 +48,17 @@ const STEPS = [
   },
 ] as const;
 
+const VIEWPORT = { once: true, margin: '-100px' };
+
 export default function ProcessSection() {
   return (
     <section id="process" style={{ background: '#FFFFFF', padding: '96px 0' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 40px' }}>
-        <h2
+        <motion.h2
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
           style={{
             fontFamily: 'var(--font-karst)',
             fontWeight: 700,
@@ -60,9 +71,13 @@ export default function ProcessSection() {
           }}
         >
           COMMENT ÇA MARCHE ?
-        </h2>
+        </motion.h2>
 
-        <div
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -72,8 +87,9 @@ export default function ProcessSection() {
           className="process-grid"
         >
           {STEPS.map((s) => (
-            <div
+            <motion.div
               key={s.step}
+              variants={fadeInUp}
               style={{
                 background: '#FFFFFF',
                 border: '1px solid #F4F4F5',
@@ -86,7 +102,6 @@ export default function ProcessSection() {
                 width: '100%',
               }}
             >
-              {/* Icône */}
               <div
                 style={{
                   width: '64px',
@@ -103,7 +118,6 @@ export default function ProcessSection() {
                 {s.icon}
               </div>
 
-              {/* Titre */}
               <h3
                 style={{
                   fontFamily: 'var(--font-karst)',
@@ -117,7 +131,6 @@ export default function ProcessSection() {
                 {s.title}
               </h3>
 
-              {/* Description */}
               <p
                 style={{
                   fontFamily: 'var(--font-karst)',
@@ -130,9 +143,9 @@ export default function ProcessSection() {
               >
                 {s.description}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <style jsx>{`

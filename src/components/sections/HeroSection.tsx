@@ -4,11 +4,17 @@
  * @figma https://www.figma.com/design/VlZmkzRjZZ2yCkIfMHpjnT/ASMI?node-id=1:4
  */
 
+'use client';
+
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeInLeft, fadeInRight } from '@/lib/animations';
 
 interface HeroSectionProps {
   mockupImage?: string;
 }
+
+const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function HeroSection({ mockupImage }: HeroSectionProps) {
   return (
@@ -22,7 +28,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           paddingTop: '72px',
         }}
       >
-        {/* Décoratif 1 — rectangle penché gauche */}
+        {/* Décoratif 1 */}
         <div
           aria-hidden="true"
           style={{
@@ -37,7 +43,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           }}
         />
 
-        {/* Décoratif 2 — cercle bas-gauche */}
+        {/* Décoratif 2 */}
         <div
           aria-hidden="true"
           style={{
@@ -54,16 +60,13 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           }}
         />
 
-        {/* ── Colonne gauche — texte ─────────────────────────────────── */}
-        <div
-          style={{
-            position: 'absolute',
-            inset: '0 45% 0 0',
-            paddingLeft: '96px',
-          }}
-        >
-          {/* H1 */}
-          <h1
+        {/* ── Colonne gauche ─────────────────────────────────────────── */}
+        <div style={{ position: 'absolute', inset: '0 45% 0 0', paddingLeft: '96px' }}>
+          <motion.h1
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
             style={{
               position: 'absolute',
               top: '65px',
@@ -79,10 +82,14 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             }}
           >
             {`ENVOYEZ.\nRECEVEZ.\nEN TOUTE\nSÉCURITÉ.`}
-          </h1>
+          </motion.h1>
 
-          {/* Sous-titre */}
-          <p
+          <motion.p
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            transition={{ delay: 0.15 }}
             style={{
               position: 'absolute',
               top: '460px',
@@ -95,12 +102,16 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               maxWidth: '448px',
             }}
           >
-            La plateforme de transfert de fonds nouvelle génération pour l&apos;Afrique et l&apos;Europe.
-            Rapide, transparent et ultra-sécurisé.
-          </p>
+            La plateforme de transfert de fonds nouvelle génération pour l&apos;Afrique et
+            l&apos;Europe. Rapide, transparent et ultra-sécurisé.
+          </motion.p>
 
-          {/* Boutons CTA */}
-          <div
+          <motion.div
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            transition={{ delay: 0.3 }}
             style={{
               position: 'absolute',
               top: '581px',
@@ -109,7 +120,6 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               gap: '16px',
             }}
           >
-            {/* Bouton 1 — Télécharger l'app */}
             <button
               type="button"
               style={{
@@ -126,14 +136,16 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
                 borderRadius: '12px',
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow:
-                  '0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)',
+                boxShadow: '0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)',
+                transition: 'transform 150ms, filter 150ms',
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.filter = 'brightness(1.05)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.filter = 'none'; }}
+              onMouseDown={(e) => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               Télécharger l&apos;app
             </button>
 
-            {/* Bouton 2 — Nos services */}
             <button
               type="button"
               style={{
@@ -151,15 +163,23 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
                 border: '2px solid rgba(255,255,255,0.4)',
                 backdropFilter: 'blur(2px)',
                 cursor: 'pointer',
+                transition: 'opacity 200ms',
               }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.8'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = '1'; }}
             >
               Nos services
             </button>
-          </div>
+          </motion.div>
         </div>
 
-        {/* ── Colonne droite — mockup smartphone oblique ────────────── */}
-        <div
+        {/* ── Colonne droite — mockup ────────────────────────────────── */}
+        <motion.div
+          variants={fadeInRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          transition={{ delay: 0.2 }}
           style={{
             position: 'absolute',
             left: '426px',
@@ -180,20 +200,20 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               priority
             />
           </div>
-        </div>
+        </motion.div>
       </section>
 
       {/* ── MOBILE ────────────────────────────────────────────────────── */}
       <section
         className="relative overflow-hidden flex flex-col md:hidden"
-        style={{
-          minHeight: '100vh',
-          background: 'linear-gradient(180deg, #E00505 60%, #F9F9F9 60.1%)',
-        }}
+        style={{ minHeight: '100vh', background: 'linear-gradient(180deg, #E00505 60%, #F9F9F9 60.1%)' }}
       >
-        {/* Contenu texte */}
         <div style={{ padding: '100px 24px 40px', width: '100%' }}>
-          <h1
+          <motion.h1
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
             style={{
               fontFamily: 'var(--font-karst)',
               fontWeight: 700,
@@ -207,9 +227,14 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             }}
           >
             {`ENVOYEZ.\nRECEVEZ.\nEN TOUTE\nSÉCURITÉ.`}
-          </h1>
+          </motion.h1>
 
-          <p
+          <motion.p
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            transition={{ delay: 0.15 }}
             style={{
               fontFamily: 'var(--font-karst)',
               fontWeight: 300,
@@ -219,11 +244,18 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               marginBottom: '32px',
             }}
           >
-            La plateforme de transfert de fonds nouvelle génération pour l&apos;Afrique et l&apos;Europe.
-            Rapide, transparent et ultra-sécurisé.
-          </p>
+            La plateforme de transfert de fonds nouvelle génération pour l&apos;Afrique et
+            l&apos;Europe. Rapide, transparent et ultra-sécurisé.
+          </motion.p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <motion.div
+            variants={fadeInLeft}
+            initial="hidden"
+            whileInView="visible"
+            viewport={VIEWPORT}
+            transition={{ delay: 0.3 }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}
+          >
             <button
               type="button"
               style={{
@@ -239,13 +271,11 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
                 borderRadius: '12px',
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow:
-                  '0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)',
+                boxShadow: '0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)',
               }}
             >
               Télécharger l&apos;app
             </button>
-
             <button
               type="button"
               style={{
@@ -266,10 +296,9 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             >
               Nos services
             </button>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Image smartphone mobile */}
         <div style={{ display: 'flex', justifyContent: 'center', paddingBottom: '48px' }}>
           <div style={{ transform: 'rotate(-11deg)', position: 'relative', width: '280px', height: '280px' }}>
             <Image
