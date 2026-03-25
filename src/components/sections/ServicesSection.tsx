@@ -60,7 +60,7 @@ export default function ServicesSection() {
                 {service.number}
               </span>
 
-              <h3 className="font-karst font-bold text-2xl leading-8 text-brand-text-dark mb-[15px]">
+              <h3 className="font-karst font-bold text-2xl leading-8 text-brand-text-dark mb-3.75">
                 {service.title}
               </h3>
 

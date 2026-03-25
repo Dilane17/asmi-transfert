@@ -42,7 +42,7 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="bg-brand-gray-light section-padding">
-      <div className="max-w-[896px] mx-auto px-10">
+      <div className="max-w-4xl mx-auto px-10">
 
         <motion.div
           variants={fadeInUp}
@@ -63,7 +63,7 @@ export default function FAQSection() {
                   key={cat}
                   type="button"
                   onClick={() => { setActiveCategory(cat); setOpenIndex(null); }}
-                  className={`font-karst font-bold text-xs tracking-[1.2px] uppercase rounded-pill px-6 py-[10px] cursor-pointer transition-all duration-200 ${
+                  className={`font-karst font-bold text-xs tracking-[1.2px] uppercase rounded-pill px-6 py-2.5 cursor-pointer transition-all duration-200 ${
                     isActive
                       ? 'bg-brand-red text-white border-0'
                       : 'bg-white text-brand-gray-text border border-brand-gray-border'
@@ -96,7 +96,7 @@ export default function FAQSection() {
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
-                  className="w-full flex justify-between items-center p-[25px] bg-transparent border-0 cursor-pointer text-left gap-4"
+                  className="w-full flex justify-between items-center p-6.25 bg-transparent border-0 cursor-pointer text-left gap-4"
                 >
                   <span className={`font-karst font-bold text-[15px] transition-colors duration-300 ${isOpen ? 'text-brand-red' : 'text-brand-text-dark'}`}>
                     {item.q}
@@ -114,7 +114,7 @@ export default function FAQSection() {
                   style={{ maxHeight: isOpen ? '300px' : '0' }}
                   aria-hidden={!isOpen}
                 >
-                  <p className="font-karst font-light text-sm leading-[22px] text-brand-gray-text px-[25px] pb-[25px] m-0">
+                  <p className="font-karst font-light text-sm leading-5.5 text-brand-gray-text px-6.25 pb-6.25 m-0">
                     {item.a}
                   </p>
                 </div>
