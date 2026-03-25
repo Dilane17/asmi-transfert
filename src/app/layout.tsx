@@ -36,7 +36,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr">
-      <body>
+      <body suppressHydrationWarning>
         {/* Lien d'évitement pour l'accessibilité */}
         <a
           href="#main-content"
