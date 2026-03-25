@@ -3,8 +3,8 @@
 /* ─── Karst Font Face ─────────────────────────────────────────── */
 @font-face {
   font-family: 'Karst';
-  src: url('/fonts/Karst-Bold.woff2') format('woff2'),
-       url('/fonts/Karst-Bold.woff') format('woff');
+  src: url('/fonts/karst/Karst-ExtraBold.woff2') format('woff2'),
+       url('/fonts/karst/Karst-ExtraBold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -12,8 +12,8 @@
 
 @font-face {
   font-family: 'Karst';
-  src: url('/fonts/Karst-Light.woff2') format('woff2'),
-       url('/fonts/Karst-Light.woff') format('woff');
+  src: url('/fonts/karst/Karst-Light.woff2') format('woff2'),
+       url('/fonts/karst/Karst-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
