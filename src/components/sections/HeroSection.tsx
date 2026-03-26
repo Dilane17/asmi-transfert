@@ -81,7 +81,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           </motion.div>
 
           {/* Colonne droite */}
-          <div className="flex items-center justify-end overflow-visible pr-10">
+          <div className="flex items-center justify-end overflow-visible pr-30">
             <motion.div
               variants={fadeInRight}
               initial="hidden"
@@ -92,7 +92,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               style={{
                 width: '580px',
                 height: '680px',
-                transform: 'rotate(12deg) translateX(0px) translateY(10px)',
+                transform: 'rotate(12deg) translateX(0px) translateY(20px)',
               }}
             >
               <Image
