@@ -6,6 +6,8 @@
 
 'use client';
 
+import Image from 'next/image';
+
 const NAV_LINKS = [
   { label: 'Accueil',  href: '/' },
   { label: 'Services', href: '#services' },
@@ -24,9 +26,13 @@ export default function Footer() {
 
         {/* Colonne 1 — Marque */}
         <div>
-          <p className="font-karst font-bold text-2xl text-white mb-4">
-            ASMI <span className="text-brand-red">TRANSFERT</span>
-          </p>
+          <Image
+            src="/images/logo.png"
+            alt="ASMI Transfert"
+            width={140}
+            height={36}
+            className="h-9 w-auto object-contain mb-4 brightness-0 invert"
+          />
 
           <p className="font-karst font-light text-xs tracking-[0.6px] uppercase text-brand-text-muted leading-[18px] max-w-[260px] mb-6">
             Solutions financières structurées pour une économie globale connectée.

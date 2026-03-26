@@ -8,6 +8,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
 const NAV_LINKS = [
@@ -36,9 +37,14 @@ export default function Navbar() {
 
         {/* Logo */}
         <Link href="/" className="shrink-0">
-          <span className="font-karst font-bold text-2xl leading-none text-brand-text-dark">
-            ASMI <span className="text-brand-red">Transfert</span>
-          </span>
+          <Image
+            src="/images/logo.png"
+            alt="ASMI Transfert"
+            width={140}
+            height={36}
+            className="h-9 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Liens desktop */}

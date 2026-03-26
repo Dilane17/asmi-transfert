@@ -4,6 +4,11 @@ import Navbar from '@/components/sections/Navbar';
 
 export const metadata: Metadata = {
   title: 'ASMI Transfert — Envoyez. Recevez. En toute sécurité.',
+  icons: {
+    icon: '/images/fav.png',
+    shortcut: '/images/fav.png',
+    apple: '/images/fav.png',
+  },
   description:
     "La plateforme de transfert de fonds nouvelle génération pour l'Afrique et l'Europe. Rapide, transparent et ultra-sécurisé.",
   keywords: ['transfert argent', 'envoi argent Afrique', 'Western Union', 'Ria Money', 'MoneyGram', 'ASMI'],
