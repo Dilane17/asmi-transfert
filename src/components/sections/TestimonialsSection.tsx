@@ -65,7 +65,7 @@ export default function TestimonialsSection() {
               </span>
 
               {/* Étoiles */}
-              <div className="mb-4">
+              <div className="mb-4" role="img" aria-label={`Note : ${t.stars} étoiles sur 5`}>
                 {Array.from({ length: t.stars }).map((_, i) => (
                   <span key={i} className="text-brand-red text-sm" aria-hidden="true">★</span>
                 ))}

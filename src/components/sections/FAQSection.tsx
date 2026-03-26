@@ -96,6 +96,7 @@ export default function FAQSection() {
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-panel-${activeCategory}-${index}`}
                   className="w-full flex justify-between items-center p-6.25 bg-transparent border-0 cursor-pointer text-left gap-4"
                 >
                   <span className={`font-karst font-bold text-[15px] transition-colors duration-300 ${isOpen ? 'text-brand-red' : 'text-brand-text-dark'}`}>
@@ -110,6 +111,8 @@ export default function FAQSection() {
                 </button>
 
                 <div
+                  id={`faq-panel-${activeCategory}-${index}`}
+                  role="region"
                   className="overflow-hidden transition-all duration-300 ease-in-out"
                   style={{ maxHeight: isOpen ? '300px' : '0' }}
                   aria-hidden={!isOpen}

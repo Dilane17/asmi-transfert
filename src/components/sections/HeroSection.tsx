@@ -19,10 +19,9 @@ const VIEWPORT = { once: true, margin: '-100px' };
 export default function HeroSection({ mockupImage }: HeroSectionProps) {
   return (
     <>
-      {/* ── DESKTOP ───────────────────────────────────────────────────── */}
+      {/* ── DESKTOP (lg+) ─────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden hidden md:block h-[1128px] pt-[72px]"
-        style={{ background: 'linear-gradient(166.24deg, #E00505 55%, #F9F9F9 55.1%)' }}
+        className="relative overflow-hidden hidden lg:block h-[1128px] pt-[72px] hero-gradient-desktop"
       >
         {/* Décoratif 1 — rectangle */}
         <div
@@ -37,13 +36,13 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
         />
 
         {/* Colonne gauche — texte */}
-        <div className="hero-text-col">
+        <div className="absolute inset-0 right-[45%] flex flex-col justify-center pl-[10%] pr-8 pt-16">
           <motion.h1
             variants={fadeInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            className="absolute top-[65px] left-[96px] font-karst font-bold text-[96px] leading-[96px] tracking-[-4.8px] text-white uppercase whitespace-pre-line"
+            className="font-karst font-bold text-[88px] leading-[92px] tracking-[-4.4px] text-white uppercase mb-8"
           >
             {`ENVOYEZ.\nRECEVEZ.\nEN TOUTE\nSÉCURITÉ.`}
           </motion.h1>
@@ -54,10 +53,11 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             whileInView="visible"
             viewport={VIEWPORT}
             transition={{ delay: 0.15 }}
-            className="absolute top-[460px] left-[105px] font-karst font-light text-xl leading-7 text-white/90 max-w-[448px]"
+            className="font-karst font-light text-lg leading-7 text-white/90 max-w-[420px] mb-10"
           >
-            La plateforme de transfert de fonds nouvelle génération pour l&apos;Afrique et
-            l&apos;Europe. Rapide, transparent et ultra-sécurisé.
+            La plateforme de transfert de fonds nouvelle génération
+            pour l&apos;Afrique et l&apos;Europe. Rapide, transparent
+            et ultra-sécurisé.
           </motion.p>
 
           <motion.div
@@ -66,7 +66,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             whileInView="visible"
             viewport={VIEWPORT}
             transition={{ delay: 0.3 }}
-            className="absolute top-[581px] left-[105px] flex gap-4"
+            className="flex gap-4 items-center"
           >
             <button type="button" className="btn-hero-white">
               Télécharger l&apos;app
@@ -84,24 +84,26 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           whileInView="visible"
           viewport={VIEWPORT}
           transition={{ delay: 0.2 }}
-          className="hero-image-col"
+          className="absolute right-[-60px] top-0 bottom-0 flex items-center justify-center w-[55%]"
         >
-          <div className="relative w-[794px] h-[794px] shrink-0 rotate-[-11deg]">
+          <div
+            className="relative w-[720px] h-[720px] shrink-0"
+            style={{ transform: 'rotate(-11deg) translateX(40px)' }}
+          >
             <Image
               src={mockupImage || '/images/hero-mockup.png'}
               alt="ASMI Transfert App"
               fill
-              className="object-cover pointer-events-none"
+              className="object-contain pointer-events-none"
               priority
             />
           </div>
         </motion.div>
       </section>
 
-      {/* ── MOBILE ────────────────────────────────────────────────────── */}
+      {/* ── MOBILE (< lg) ─────────────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden flex flex-col md:hidden min-h-screen"
-        style={{ background: 'linear-gradient(180deg, #E00505 60%, #F9F9F9 60.1%)' }}
+        className="relative overflow-hidden flex flex-col lg:hidden min-h-screen hero-gradient-mobile"
       >
         <div className="pt-[100px] px-6 pb-10 w-full">
           <motion.h1
@@ -134,18 +136,10 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             transition={{ delay: 0.3 }}
             className="flex flex-col gap-3"
           >
-            <button
-              type="button"
-              className="btn-hero-white w-full"
-              style={{ width: '100%' }}
-            >
+            <button type="button" className="btn-hero-white w-full">
               Télécharger l&apos;app
             </button>
-            <button
-              type="button"
-              className="btn-secondary-hero w-full"
-              style={{ width: '100%' }}
-            >
+            <button type="button" className="btn-secondary-hero w-full">
               Nos services
             </button>
           </motion.div>
@@ -159,7 +153,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               alt="ASMI Transfert App"
               fill
               className="object-cover pointer-events-none"
-              loading="lazy"
+              priority
             />
           </div>
         </div>

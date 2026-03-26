@@ -49,7 +49,7 @@ export default function StatsSection() {
       </motion.div>
 
       {/* Mobile */}
-      <div className="grid md:hidden grid-cols-2 p-12 gap-8">
+      <div className="grid md:hidden grid-cols-2 p-8 gap-8">
         {STATS.map((stat, index) => (
           <div
             key={stat.value}

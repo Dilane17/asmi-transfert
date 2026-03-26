@@ -18,7 +18,7 @@ const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function CTASection({ ctaMockupImage }: CTASectionProps) {
   return (
-    <section className="bg-brand-red relative overflow-hidden h-[528px] md:h-[528px]">
+    <section className="bg-brand-red relative overflow-hidden h-auto md:h-[528px] py-16 md:py-0">
       <div className="container h-full flex items-center">
 
         {/* Contenu gauche */}
@@ -39,7 +39,7 @@ export default function CTASection({ ctaMockupImage }: CTASectionProps) {
 
           <div className="flex gap-4 mt-8 flex-wrap">
             {/* App Store */}
-            <a href="#" className="btn-store">
+            <a href="#" onClick={(e) => e.preventDefault()} aria-label="Télécharger ASMI Transfert sur l'App Store" className="btn-store">
               <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
                 <path d="M16.3 12.9c0-3.2 2.6-4.7 2.7-4.8-1.5-2.1-3.7-2.4-4.5-2.4-1.9-.2-3.7 1.1-4.7 1.1-1 0-2.5-1.1-4.1-1.1-2.1 0-4 1.2-5.1 3.1-2.2 3.8-.6 9.3 1.5 12.4 1 1.5 2.2 3.1 3.8 3 1.5-.1 2.1-1 3.9-1s2.4 1 4 .9c1.6-.1 2.7-1.5 3.7-3 1.2-1.7 1.6-3.4 1.7-3.5-.1 0-3.9-1.5-3.9-5.7zM13.2 3.6c.8-1 1.4-2.4 1.2-3.6-1.2.1-2.7.8-3.5 1.8-.8.9-1.5 2.3-1.3 3.6 1.4.1 2.8-.6 3.6-1.8z" fill="#FFFFFF" />
               </svg>
@@ -50,7 +50,7 @@ export default function CTASection({ ctaMockupImage }: CTASectionProps) {
             </a>
 
             {/* Google Play */}
-            <a href="#" className="btn-store">
+            <a href="#" onClick={(e) => e.preventDefault()} aria-label="Télécharger ASMI Transfert sur Google Play" className="btn-store">
               <svg width="20" height="22" viewBox="0 0 20 22" fill="none" aria-hidden="true">
                 <path d="M1 1l10 10L1 21V1z" fill="#FFFFFF" opacity="0.8" />
                 <path d="M1 1l11 6-2 2L1 1z" fill="#FFFFFF" />

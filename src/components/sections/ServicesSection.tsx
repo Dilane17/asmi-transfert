@@ -55,7 +55,7 @@ export default function ServicesSection() {
               {/* Numéro filigrane */}
               <span
                 aria-hidden="true"
-                className="absolute right-2 bottom-4 font-karst font-bold text-[96px] text-[#FAFAFA] pointer-events-none select-none leading-none"
+                className="absolute right-2 bottom-4 font-karst font-bold text-[96px] text-brand-gray-light pointer-events-none select-none leading-none"
               >
                 {service.number}
               </span>
@@ -70,6 +70,7 @@ export default function ServicesSection() {
 
               <a
                 href="#"
+                onClick={(e) => e.preventDefault()}
                 className="font-karst font-bold text-xs tracking-[1.2px] uppercase text-brand-blue flex items-center gap-2 no-underline transition-opacity duration-200 hover:opacity-80"
               >
                 EN SAVOIR PLUS

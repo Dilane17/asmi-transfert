@@ -57,7 +57,7 @@ export default function Navbar() {
 
         {/* CTA desktop */}
         <div className="hidden md:block">
-          <Button variant="primary" href="#" className="w-[173px]">
+          <Button variant="primary" href="#" onClick={(e) => e.preventDefault()} className="w-[173px]">
             Ouvrir un compte
           </Button>
         </div>
@@ -96,7 +96,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Button variant="primary" href="#" className="mt-2 w-full justify-center">
+          <Button variant="primary" href="#" onClick={(e) => e.preventDefault()} className="mt-2 w-full justify-center">
             Ouvrir un compte
           </Button>
         </nav>

@@ -40,7 +40,7 @@ export default function RootLayout({
         {/* Lien d'évitement pour l'accessibilité */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-[#E00505] focus:text-white focus:rounded-[9999px] focus:font-bold focus:text-sm focus:tracking-[1px] focus:uppercase"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-brand-red focus:text-white focus:rounded-pill focus:font-bold focus:text-sm focus:tracking-wide focus:uppercase"
         >
           Passer au contenu principal
         </a>
