@@ -28,16 +28,14 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           background: 'linear-gradient(160deg, #E00505 60%, #F9F9F9 60.1%)',
         }}
       >
-        <div className="grid h-full" style={{ gridTemplateColumns: '55% 45%' }}>
-
-          {/* Colonne gauche */}
+        {/* Texte — aligné sur le container navbar */}
+        <div className="container h-full flex items-center">
           <motion.div
             variants={fadeInLeft}
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            className="flex flex-col justify-center gap-6"
-            style={{ padding: '0 48px 0 6vw' }}
+            className="flex flex-col justify-center gap-6 w-[52%]"
           >
             <h1
               className="font-karst font-bold text-white uppercase leading-none"
@@ -79,33 +77,34 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               </button>
             </motion.div>
           </motion.div>
-
-          {/* Colonne droite */}
-          <div className="flex items-center justify-end overflow-visible pr-30">
-            <motion.div
-              variants={fadeInRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={VIEWPORT}
-              transition={{ delay: 0.2 }}
-              className="relative shrink-0"
-              style={{
-                width: '580px',
-                height: '680px',
-                transform: 'rotate(12deg) translateX(0px) translateY(20px)',
-              }}
-            >
-              <Image
-                src={mockupImage || '/images/hero-mockup.png'}
-                alt="ASMI Transfert App"
-                fill
-                className="object-contain pointer-events-none"
-                priority
-              />
-            </motion.div>
-          </div>
-
         </div>
+
+        {/* Image — absolute sur toute la moitié droite, grande sans contrainte */}
+        <motion.div
+          variants={fadeInRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          transition={{ delay: 0.2 }}
+          className="absolute top-0 bottom-0 right-0 w-[52%] flex items-center justify-center pointer-events-none"
+        >
+          <div
+            className="relative shrink-0"
+            style={{
+              width: '720px',
+              height: '820px',
+              transform: 'rotate(12deg) translateX(60px) translateY(10px)',
+            }}
+          >
+            <Image
+              src={mockupImage || '/images/hero-mockup.png'}
+              alt="ASMI Transfert App"
+              fill
+              className="object-contain pointer-events-none"
+              priority
+            />
+          </div>
+        </motion.div>
 
         {/* Éléments décoratifs */}
         <div
