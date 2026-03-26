@@ -22,7 +22,7 @@ export default function Footer() {
     <footer className="bg-brand-black text-brand-text-muted">
 
       {/* Grille principale */}
-      <div className="container-main pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
+      <div className="container pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
 
         {/* Colonne 1 — Marque */}
         <div>
@@ -98,7 +98,7 @@ export default function Footer() {
       </div>
 
       {/* Barre bas */}
-      <div className="container-main mt-16 border-t border-white/5 py-10 flex flex-col md:flex-row justify-between items-start md:items-center flex-wrap gap-4">
+      <div className="container mt-16 border-t border-white/5 py-10 flex flex-col md:flex-row justify-between items-start md:items-center flex-wrap gap-4">
         <span className="footer-bottom-text">© {new Date().getFullYear()} ASMI TRANSFERT.</span>
         <span className="footer-bottom-text">MADE BY HUSTLERLABS</span>
         <div className="flex gap-6">

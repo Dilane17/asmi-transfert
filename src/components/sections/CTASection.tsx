@@ -19,7 +19,7 @@ const VIEWPORT = { once: true, margin: '-100px' };
 export default function CTASection({ ctaMockupImage }: CTASectionProps) {
   return (
     <section className="bg-brand-red relative overflow-hidden h-auto md:h-[528px] py-16 md:py-0">
-      <div className="container-main h-full flex items-center relative z-10">
+      <div className="container h-full flex items-center relative z-10">
 
         {/* Contenu gauche */}
         <motion.div

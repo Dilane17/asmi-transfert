@@ -42,7 +42,7 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="bg-brand-gray-light section-padding">
-      <div className="container-main">
+      <div className="container">
       <div className="max-w-[896px] mx-auto">
 
         <motion.div

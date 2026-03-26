@@ -21,7 +21,7 @@ const VIEWPORT = { once: true, margin: '-100px' };
 export default function StatsSection() {
   return (
     <section className="bg-white border-b border-brand-gray-border">
-      <div className="container-main">
+      <div className="container">
       {/* Desktop */}
       <motion.div
         variants={staggerContainer}

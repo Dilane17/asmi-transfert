@@ -32,7 +32,7 @@ const VIEWPORT = { once: true, margin: '-100px' };
 export default function ServicesSection() {
   return (
     <section id="services" className="bg-brand-gray-light section-padding">
-      <div className="container-main">
+      <div className="container">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"
