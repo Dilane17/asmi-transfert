@@ -67,6 +67,25 @@
   max-width: 1280px;
 }
 
+/* ─── Container principal (alignement navbar) ─────────────────── */
+@layer components {
+  .container-main {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media (max-width: 768px) {
+    .container-main {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+}
+
 /* ─── Hero gradients ──────────────────────────────────────────── */
 @utility hero-gradient-desktop {
   background: linear-gradient(166.24deg, var(--color-brand-red) 55%, var(--color-brand-gray-light) 55.1%);

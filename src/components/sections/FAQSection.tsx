@@ -42,7 +42,8 @@ export default function FAQSection() {
 
   return (
     <section id="faq" className="bg-brand-gray-light section-padding">
-      <div className="max-w-4xl mx-auto px-10">
+      <div className="container-main">
+      <div className="max-w-[896px] mx-auto">
 
         <motion.div
           variants={fadeInUp}
@@ -125,6 +126,7 @@ export default function FAQSection() {
             );
           })}
         </motion.div>
+      </div>
       </div>
     </section>
   );

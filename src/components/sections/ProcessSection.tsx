@@ -53,7 +53,7 @@ const VIEWPORT = { once: true, margin: '-100px' };
 export default function ProcessSection() {
   return (
     <section id="process" className="bg-white section-padding">
-      <div className="container">
+      <div className="container-main">
         <motion.h2
           variants={fadeInUp}
           initial="hidden"

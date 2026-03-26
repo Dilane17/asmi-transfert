@@ -21,7 +21,8 @@ const VIEWPORT = { once: true, margin: '-100px' };
 export default function SecuritySection() {
   return (
     <section id="security" className="bg-brand-black section-padding">
-      <div className="container grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+      <div className="container-main">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 
         {/* Colonne gauche */}
         <motion.div
@@ -66,6 +67,7 @@ export default function SecuritySection() {
             </motion.div>
           ))}
         </motion.div>
+      </div>
       </div>
     </section>
   );

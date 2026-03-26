@@ -21,13 +21,14 @@ const VIEWPORT = { once: true, margin: '-100px' };
 export default function StatsSection() {
   return (
     <section className="bg-white border-b border-brand-gray-border">
+      <div className="container-main">
       {/* Desktop */}
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT}
-        className="container hidden md:grid grid-cols-4 pt-24 h-[305px]"
+        className="hidden md:grid grid-cols-4 pt-24 h-[305px]"
       >
         {STATS.map((stat, index) => (
           <motion.div
@@ -49,7 +50,7 @@ export default function StatsSection() {
       </motion.div>
 
       {/* Mobile */}
-      <div className="grid md:hidden grid-cols-2 p-8 gap-8">
+      <div className="grid md:hidden grid-cols-2 py-8 gap-8">
         {STATS.map((stat, index) => (
           <div
             key={stat.value}
@@ -70,6 +71,7 @@ export default function StatsSection() {
             </p>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
