@@ -23,9 +23,9 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
       <section
         className="relative overflow-hidden hidden lg:block"
         style={{
-          height: 'calc(100vh - 69px)',
-          maxHeight: '700px',
-          background: 'linear-gradient(166.24deg, #E00505 55%, #F9F9F9 55.1%)',
+          height: '100vh',
+          minHeight: '800px',
+          background: 'linear-gradient(160deg, #E00505 60%, #F9F9F9 60.1%)',
         }}
       >
         <div className="grid h-full" style={{ gridTemplateColumns: '55% 45%' }}>
@@ -81,7 +81,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           </motion.div>
 
           {/* Colonne droite */}
-          <div className="flex items-center justify-end overflow-visible">
+          <div className="flex items-center justify-end overflow-visible pr-10">
             <motion.div
               variants={fadeInRight}
               initial="hidden"
@@ -90,9 +90,9 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               transition={{ delay: 0.2 }}
               className="relative shrink-0"
               style={{
-                width: '480px',
-                height: '580px',
-                transform: 'rotate(12deg) translateX(40px) translateY(20px)',
+                width: '580px',
+                height: '680px',
+                transform: 'rotate(12deg) translateX(0px) translateY(10px)',
               }}
             >
               <Image
