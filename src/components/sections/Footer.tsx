@@ -22,7 +22,7 @@ export default function Footer() {
     <footer className="bg-brand-black text-brand-text-muted">
 
       {/* Grille principale */}
-      <div className="container pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12">
+      <div className="container pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 text-center sm:text-left">
 
         {/* Colonne 1 — Marque */}
         <div>
@@ -31,15 +31,15 @@ export default function Footer() {
             alt="ASMI Transfert"
             width={140}
             height={36}
-            className="h-9 w-auto object-contain mb-4 brightness-0 invert"
+            className="h-9 w-auto object-contain mb-4 brightness-0 invert mx-auto sm:mx-0"
           />
 
-          <p className="font-karst font-light text-xs tracking-[0.6px] uppercase text-brand-text-muted leading-[18px] max-w-[260px] mb-6">
+          <p className="font-karst font-light text-xs tracking-[0.6px] uppercase text-brand-text-muted leading-4.5 max-w-65 mb-6 mx-auto sm:mx-0">
             Solutions financières structurées pour une économie globale connectée.
           </p>
 
           {/* Réseaux sociaux */}
-          <div className="flex gap-3">
+          <div className="flex gap-3 justify-center sm:justify-start">
             <a href="#" onClick={(e) => e.preventDefault()} aria-label="Facebook"  className="footer-social-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
@@ -98,10 +98,10 @@ export default function Footer() {
       </div>
 
       {/* Barre bas */}
-      <div className="container mt-16 border-t border-white/5 py-10 flex flex-col md:flex-row justify-between items-start md:items-center flex-wrap gap-4">
+      <div className="container mt-16 border-t border-white/5 py-10 flex flex-col md:flex-row justify-between items-center md:items-center flex-wrap gap-4">
         <span className="footer-bottom-text">© {new Date().getFullYear()} ASMI TRANSFERT.</span>
         <span className="footer-bottom-text">MADE BY HUSTLERLABS</span>
-        <div className="flex gap-6">
+        <div className="flex gap-6 justify-center">
           {LEGAL_LINKS.map((label) => (
             <a key={label} href="#" onClick={(e) => e.preventDefault()} className="footer-link">{label}</a>
           ))}

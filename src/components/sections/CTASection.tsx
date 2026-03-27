@@ -18,7 +18,7 @@ const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function CTASection({ ctaMockupImage }: CTASectionProps) {
   return (
-    <section className="bg-brand-red relative overflow-hidden h-auto md:h-[528px] py-16 md:py-0">
+    <section className="bg-brand-red relative h-auto md:h-132 py-16 md:py-0">
       <div className="container h-full flex items-center relative z-10">
 
         {/* Contenu gauche */}
@@ -29,11 +29,11 @@ export default function CTASection({ ctaMockupImage }: CTASectionProps) {
           viewport={VIEWPORT}
           className="max-w-full md:max-w-[50%] relative z-10"
         >
-          <h2 className="font-karst font-bold text-[48px] md:text-[72px] leading-[52px] md:leading-[72px] tracking-[-2.4px] md:tracking-[-3.6px] uppercase text-white whitespace-pre-line">
+          <h2 className="font-karst font-bold text-[48px] md:text-[72px] leading-13 md:leading-18 tracking-[-2.4px] md:tracking-[-3.6px] uppercase text-white whitespace-pre-line">
             {`TÉLÉCHARGEZ\nASMI TRANSFERT`}
           </h2>
 
-          <p className="font-karst font-light text-lg leading-7 text-white/80 max-w-[392px] mt-8">
+          <p className="font-karst font-light text-lg leading-7 text-white/80 max-w-98 mt-8">
             Prenez le contrôle de vos finances. Envoyez de l&apos;argent partout, tout le temps, en un clic.
           </p>
 
@@ -72,7 +72,7 @@ export default function CTASection({ ctaMockupImage }: CTASectionProps) {
           whileInView="visible"
           viewport={VIEWPORT}
           transition={{ delay: 0.2 }}
-          className="hidden md:block absolute right-18 bottom-0 top-8 w-[560px] pointer-events-none rotate-1"
+          className="hidden md:block absolute right-10 -bottom-24 -top-40 w-170 pointer-events-none"
         >
           <Image
             src={ctaMockupImage || '/images/cta-mockup.png'}

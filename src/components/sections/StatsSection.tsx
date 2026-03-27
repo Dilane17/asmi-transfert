@@ -28,7 +28,7 @@ export default function StatsSection() {
         initial="hidden"
         whileInView="visible"
         viewport={VIEWPORT}
-        className="hidden md:grid grid-cols-4 pt-24 h-[305px]"
+        className="hidden md:grid grid-cols-4 pt-24 h-76.25"
       >
         {STATS.map((stat, index) => (
           <motion.div
@@ -57,7 +57,7 @@ export default function StatsSection() {
             className={`px-6 ${index % 2 === 0 ? 'border-r border-brand-gray-border' : ''}`}
           >
             <div className="relative inline-block mb-2">
-              <span className="font-karst font-bold text-[40px] leading-[40px] text-brand-red block">
+              <span className="font-karst font-bold text-[40px] leading-10 text-brand-red block">
                 {stat.value}
               </span>
               {stat.hasStarIcon && (

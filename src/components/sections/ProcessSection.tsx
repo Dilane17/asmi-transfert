@@ -75,7 +75,7 @@ export default function ProcessSection() {
             <motion.div
               key={s.step}
               variants={fadeInUp}
-              className="bg-white border border-brand-gray-border rounded-card p-[41px] flex flex-col items-center text-center"
+              className="bg-white border border-brand-gray-border rounded-card p-10.25 flex flex-col items-center text-center"
             >
               <div className={`step-icon ${s.iconBg}`}>{s.icon}</div>
 

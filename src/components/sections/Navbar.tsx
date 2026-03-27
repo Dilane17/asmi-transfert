@@ -12,26 +12,48 @@ import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
 const NAV_LINKS = [
-  { label: 'Accueil',          href: '/',        active: true  },
-  { label: 'Services',         href: '#services', active: false },
-  { label: 'Comment ça marche',href: '#process',  active: false },
-  { label: 'Sécurité',         href: '#security', active: false },
-  { label: 'FAQ',              href: '#faq',      active: false },
+  { label: 'Accueil',          href: '/'         },
+  { label: 'Services',         href: '#services'  },
+  { label: 'Comment ça marche',href: '#process'   },
+  { label: 'Sécurité',         href: '#security'  },
+  { label: 'FAQ',              href: '#faq'       },
 ];
 
+const SECTION_IDS = ['services', 'process', 'security', 'faq'];
+
 export default function Navbar() {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled,       setScrolled]       = useState(false);
+  const [menuOpen,       setMenuOpen]       = useState(false);
+  const [activeHref,     setActiveHref]     = useState('/');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 10);
+      if (window.scrollY < 80) setActiveHref('/');
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveHref(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: '-40% 0px -55% 0px' },
+    );
+    SECTION_IDS.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 h-[69px] bg-white/90 backdrop-blur-[6px] border-b border-brand-gray-border transition-shadow duration-200 ${scrolled ? 'shadow-navbar' : ''}`}
+      className={`fixed top-0 left-0 right-0 z-50 h-17.25 bg-white/90 backdrop-blur-[6px] border-b border-brand-gray-border transition-shadow duration-200 ${scrolled ? 'shadow-navbar' : ''}`}
     >
       <div className="container flex items-center justify-between h-full">
 
@@ -53,7 +75,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={link.active ? 'page' : undefined}
+              aria-current={activeHref === link.href ? 'page' : undefined}
               className="nav-link"
             >
               {link.label}
@@ -63,15 +85,15 @@ export default function Navbar() {
 
         {/* CTA desktop */}
         <div className="hidden md:block">
-          <Button variant="primary" href="#" onClick={(e) => e.preventDefault()} className="w-[173px]">
-            Ouvrir un compte
+          <Button variant="primary" href="#" onClick={(e) => e.preventDefault()} className="w-43.25">
+            Télécharger
           </Button>
         </div>
 
         {/* Hamburger mobile */}
         <button
           type="button"
-          className="md:hidden flex flex-col gap-[5px] p-2 cursor-pointer"
+          className="md:hidden flex flex-col gap-1.25 p-2 cursor-pointer"
           onClick={() => setMenuOpen((v) => !v)}
           aria-label="Ouvrir le menu"
           aria-expanded={menuOpen}
@@ -95,7 +117,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              aria-current={link.active ? 'page' : undefined}
+              aria-current={activeHref === link.href ? 'page' : undefined}
               onClick={() => setMenuOpen(false)}
               className="nav-link text-lg"
             >

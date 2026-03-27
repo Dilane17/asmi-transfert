@@ -32,11 +32,11 @@ export default function SecuritySection() {
           viewport={VIEWPORT}
         >
         
-          <h2 className="font-karst font-bold text-[72px] leading-[72px] tracking-[-3.6px] uppercase text-white whitespace-pre-line">
+          <h2 className="font-karst font-bold text-[72px] leading-18 tracking-[-3.6px] uppercase text-white whitespace-pre-line">
             {`SÉCURITÉ\nBANCAIRE.`}
           </h2>
 
-          <p className="font-karst font-light text-lg leading-7 text-brand-text-muted max-w-[448px] mt-8">
+          <p className="font-karst font-light text-lg leading-7 text-brand-text-muted max-w-md mt-8">
             Nous appliquons les standards de sécurité les plus stricts pour protéger chaque centime de vos transferts.
           </p>
 
@@ -51,7 +51,7 @@ export default function SecuritySection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {SECURITY_BLOCKS.map((block) => (
             <motion.div key={block.title} variants={scaleIn} className="security-card">

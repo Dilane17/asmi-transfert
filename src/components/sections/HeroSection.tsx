@@ -21,7 +21,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
     <>
       {/* ── DESKTOP (lg+) ──────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden hidden lg:block"
+        className="relative hidden lg:block"
         style={{
           height: '100vh',
           minHeight: '800px',
@@ -35,7 +35,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             initial="hidden"
             whileInView="visible"
             viewport={VIEWPORT}
-            className="flex flex-col justify-center gap-6 w-[52%]"
+            className="flex flex-col justify-center gap-3 w-[52%]"
           >
             <h1
               className="font-karst font-bold text-white uppercase leading-none"
@@ -48,7 +48,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               EN TOUTE SÉCURITÉ.
             </h1>
 
-            <p className="font-karst font-light text-white/90 text-base leading-relaxed max-w-[440px]">
+            <p className="font-karst font-light text-white/90 text-base leading-relaxed max-w-110">
               La plateforme de transfert de fonds nouvelle génération pour
               l&apos;Afrique et l&apos;Europe. Rapide, transparent et ultra-sécurisé.
             </p>
@@ -70,7 +70,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               </button>
               <button
                 type="button"
-                className="font-karst font-bold text-white uppercase tracking-wider text-sm bg-transparent rounded-pill px-7 py-[14px] cursor-pointer"
+                className="font-karst font-bold text-white uppercase tracking-wider text-sm bg-transparent rounded-pill px-7 py-3.5 cursor-pointer"
                 style={{ border: '2px solid rgba(255,255,255,0.7)' }}
               >
                 Nos services
@@ -86,7 +86,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           whileInView="visible"
           viewport={VIEWPORT}
           transition={{ delay: 0.2 }}
-          className="absolute top-0 bottom-0 right-0 w-[52%] flex items-center justify-center pointer-events-none"
+          className="absolute -top-60 -bottom-24 right-40 w-[52%] flex items-center justify-center pointer-events-none"
         >
           <div
             className="relative shrink-0"
@@ -100,7 +100,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               src={mockupImage || '/images/hero-mockup.png'}
               alt="ASMI Transfert App"
               fill
-              className="object-contain pointer-events-none"
+              className="object-contain pointer-events-none mt-15"
               priority
             />
           </div>
@@ -154,7 +154,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
             </button>
             <button
               type="button"
-              className="font-karst font-bold text-white uppercase tracking-wider text-sm bg-transparent rounded-pill px-6 py-[14px] w-full cursor-pointer"
+              className="font-karst font-bold text-white uppercase tracking-wider text-sm bg-transparent rounded-pill px-6 py-3.5 w-full cursor-pointer"
               style={{ border: '2px solid rgba(255,255,255,0.7)' }}
             >
               Nos services

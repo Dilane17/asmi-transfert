@@ -17,7 +17,7 @@ const FAQ_DATA: Record<Category, { q: string; a: string }[]> = {
     { q: 'Quels sont les délais de transfert ?', a: "Les transferts sont généralement traités en quelques minutes selon l'opérateur choisi." },
     { q: 'Quels sont les documents requis ?', a: "Une pièce d'identité valide (CNI, Passeport) est nécessaire pour toute opération conformément aux réglementations bancaires en vigueur." },
     { q: "Où puis-je retirer l'argent ?", a: 'Vous pouvez retirer dans plus de 200 points de retrait en Afrique et en Europe.' },
-    { q: 'Quels sont les frais de service ?', a: 'Les frais varient selon le montant et la destination. Consultez notre simulateur pour une estimation précise.' },
+    { q: 'Quels sont les frais de service ?', a: 'Nous ne prenons pas de fraias sur nos service, tout es entièrement gratuit sur asmi-transfert.' },
   ],
   Transferts: [
     { q: 'Quel est le montant maximum par transfert ?', a: 'Le plafond de transfert dépend de votre niveau de vérification KYC et de la réglementation en vigueur dans votre pays.' },
@@ -43,7 +43,7 @@ export default function FAQSection() {
   return (
     <section id="faq" className="bg-brand-gray-light section-padding">
       <div className="container">
-      <div className="max-w-[896px] mx-auto">
+      <div className="max-w-4xl mx-auto">
 
         <motion.div
           variants={fadeInUp}
