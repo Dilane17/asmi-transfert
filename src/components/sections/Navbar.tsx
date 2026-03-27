@@ -64,7 +64,7 @@ export default function Navbar() {
             alt="ASMI Transfert"
             width={140}
             height={36}
-            className="h-9 w-auto object-contain"
+            className="h-!5 w-auto object-contain"
             priority
           />
         </Link>
