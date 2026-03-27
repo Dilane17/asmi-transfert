@@ -122,25 +122,29 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
 
       {/* ── MOBILE (< lg) ──────────────────────────────────────── */}
       <section
-        className="relative overflow-hidden flex flex-col lg:hidden min-h-screen"
+        className="relative overflow-hidden lg:hidden"
         style={{
-          background: 'linear-gradient(180deg, #E00505 65%, #F9F9F9 65.1%)',
+          minHeight: '100svh',
+          background: 'linear-gradient(160deg, #E00505 60%, #F9F9F9 60.1%)',
         }}
       >
-        <div className="pt-24 px-6 pb-8 flex flex-col gap-6">
-          <motion.h1
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
+        {/* Texte — côté gauche, largeur limitée pour laisser place à l'image */}
+        <motion.div
+          variants={fadeInLeft}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="relative z-10 pt-24 px-6 flex flex-col gap-5 w-[62%]"
+        >
+          <h1
             className="font-karst font-bold text-white uppercase leading-tight"
-            style={{ fontSize: 'clamp(40px, 10vw, 56px)', letterSpacing: '-2px' }}
+            style={{ fontSize: 'clamp(28px, 8vw, 44px)', letterSpacing: '-1.5px' }}
           >
             ENVOYEZ. RECEVEZ.<br />
             EN TOUTE SÉCURITÉ.
-          </motion.h1>
+          </h1>
 
-          <p className="font-karst font-light text-white/90 text-sm leading-relaxed">
+          <p className="font-karst font-light text-white/90 text-xs leading-relaxed">
             La plateforme de transfert de fonds nouvelle génération pour
             l&apos;Afrique et l&apos;Europe. Rapide, transparent et ultra-sécurisé.
           </p>
@@ -148,28 +152,32 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           <div className="flex flex-col gap-3">
             <button
               type="button"
-              className="font-karst font-bold text-brand-red uppercase tracking-wider text-sm bg-white rounded-pill px-6 py-4 border-none w-full cursor-pointer"
+              className="font-karst font-bold text-brand-red uppercase tracking-wider text-xs bg-white rounded-pill px-5 py-3.5 border-none w-full cursor-pointer"
             >
               Télécharger l&apos;app
             </button>
             <button
               type="button"
-              className="font-karst font-bold text-white uppercase tracking-wider text-sm bg-transparent rounded-pill px-6 py-3.5 w-full cursor-pointer"
+              className="font-karst font-bold text-white uppercase tracking-wider text-xs bg-transparent rounded-pill px-5 py-3 w-full cursor-pointer"
               style={{ border: '2px solid rgba(255,255,255,0.7)' }}
             >
               Nos services
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        <div className="flex justify-center pb-10">
+        {/* Image — absolute droite, même principe que desktop */}
+        <motion.div
+          variants={fadeInRight}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          transition={{ delay: 0.2 }}
+          className="absolute top-0 bottom-0 -right-4 w-[55%] pointer-events-none"
+        >
           <div
-            className="relative"
-            style={{
-              width: '260px',
-              height: '320px',
-              transform: 'rotate(12deg)',
-            }}
+            className="relative w-full h-full"
+            style={{ transform: 'rotate(12deg) translateX(10px) translateY(20px)' }}
           >
             <Image
               src={mockupImage || '/images/hero-mockup.png'}
@@ -179,7 +187,7 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
               priority
             />
           </div>
-        </div>
+        </motion.div>
       </section>
     </>
   );

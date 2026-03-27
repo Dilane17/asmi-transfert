@@ -72,7 +72,7 @@ export default function CTASection({ ctaMockupImage }: CTASectionProps) {
           whileInView="visible"
           viewport={VIEWPORT}
           transition={{ delay: 0.2 }}
-          className="hidden md:block absolute right-10 -bottom-24 -top-40 w-170 pointer-events-none"
+          className="hidden md:block absolute right-0 -bottom-24 -top-40 w-[42%] max-w-[480px] pointer-events-none"
         >
           <Image
             src={ctaMockupImage || '/images/cta-mockup.png'}
