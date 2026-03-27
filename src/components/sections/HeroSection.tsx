@@ -121,20 +121,15 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
       </section>
 
       {/* ── MOBILE (< lg) ──────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden lg:hidden"
-        style={{
-          minHeight: '100svh',
-          background: 'linear-gradient(160deg, #E00505 60%, #F9F9F9 60.1%)',
-        }}
-      >
+      <section className="relative overflow-hidden lg:hidden bg-brand-red pb-16">
+
         {/* Texte — côté gauche, largeur limitée pour laisser place à l'image */}
         <motion.div
           variants={fadeInLeft}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="relative z-10 pt-24 px-6 flex flex-col gap-5 w-[62%]"
+          className="relative z-10 pt-24 px-6 flex flex-col gap-5 w-[60%]"
         >
           <h1
             className="font-karst font-bold text-white uppercase leading-tight"
@@ -166,24 +161,25 @@ export default function HeroSection({ mockupImage }: HeroSectionProps) {
           </div>
         </motion.div>
 
-        {/* Image — absolute droite, même principe que desktop */}
+        {/* Image — ancrée au niveau du h1 (top-24 = pt-24) */}
         <motion.div
           variants={fadeInRight}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
           transition={{ delay: 0.2 }}
-          className="absolute top-0 bottom-0 -right-4 w-[55%] pointer-events-none"
+          className="absolute top-24 -right-4 w-[52%] pointer-events-none"
+          style={{ height: '58vw' }}
         >
           <div
             className="relative w-full h-full"
-            style={{ transform: 'rotate(12deg) translateX(10px) translateY(20px)' }}
+            style={{ transform: 'rotate(12deg) translateX(8px)' }}
           >
             <Image
               src={mockupImage || '/images/hero-mockup.png'}
               alt="ASMI Transfert App"
               fill
-              className="object-contain pointer-events-none"
+              className="object-contain object-top pointer-events-none"
               priority
             />
           </div>
