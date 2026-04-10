@@ -7,6 +7,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 const NAV_LINKS = [
   { label: 'Accueil',           href: '/'         },
@@ -17,7 +18,10 @@ const NAV_LINKS = [
   { label: 'Contact',           href: '#contact'   },
 ];
 const PARTNER_LINKS = ['Western Union', 'RIA Money Transfer', 'MoneyGram'];
-const LEGAL_LINKS   = ['Mentions Légales', 'Politique de confidentialité'];
+const LEGAL_LINKS = [
+  { label: 'Politique de confidentialité', href: '/politique-de-confidentialite' },
+  { label: 'Mentions légales',             href: '/mentions-legales'              },
+];
 
 export default function Footer() {
   return (
@@ -139,15 +143,14 @@ export default function Footer() {
         </span>
         <span className="footer-bottom-text">MADE BY HUSTLERLABS</span>
         <div className="flex gap-6 justify-center">
-          {LEGAL_LINKS.map((label) => (
-            <a
-              key={label}
-              href="#"
-              onClick={(e) => e.preventDefault()}
+          {LEGAL_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
               className="footer-link"
             >
-              {label}
-            </a>
+              {link.label}
+            </Link>
           ))}
         </div>
       </div>
