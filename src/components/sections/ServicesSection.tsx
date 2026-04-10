@@ -12,18 +12,27 @@ import { fadeInUp, staggerContainer, scaleIn } from '@/lib/animations';
 const SERVICES = [
   {
     number: '01',
-    title: 'WESTERN UNION',
-    description: "Le leader mondial du transfert d'argent. Envoyez des fonds dans plus de 200 pays instantanément.",
+    title: 'Western Union',
+    description:
+      "Envoyez ou retirez un transfert Western Union en toute simplicité. Renseignez votre numéro de contrôle, notre opérateur vérifie et exécute le décaissement vers votre Mobile Money.",
+    linkColorClass: 'text-brand-red',
+    linkStroke: '#E00505',
   },
   {
     number: '02',
-    title: 'RIA MONEY',
-    description: "Transférez de l'argent avec des tarifs compétitifs et un réseau global fiable pour vos proches.",
+    title: 'RIA Money Transfer',
+    description:
+      "Accédez au réseau RIA pour vos transferts internationaux. Soumettez votre demande en quelques secondes, suivez son statut en temps réel.",
+    linkColorClass: 'text-brand-blue',
+    linkStroke: '#0606EF',
   },
   {
     number: '03',
-    title: 'MONEYGRAM',
-    description: "Rapidité et simplicité pour vos envois internationaux. Recevez l'argent en quelques minutes.",
+    title: 'MoneyGram',
+    description:
+      "Retirez ou envoyez de l'argent via MoneyGram avec une traçabilité complète. Chaque étape confirmée par notification jusqu'au décaissement.",
+    linkColorClass: 'text-brand-red',
+    linkStroke: '#E00505',
   },
 ] as const;
 
@@ -33,15 +42,29 @@ export default function ServicesSection() {
   return (
     <section id="services" className="bg-brand-gray-light section-padding">
       <div className="container">
-        <motion.h2
+        <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="section-title mb-12"
+          className="mb-12 text-center"
         >
-          CHOISISSEZ VOTRE OPÉRATEUR DE TRANSFERT
-        </motion.h2>
+          {/* Label */}
+          <p className="font-karst font-bold text-xs uppercase tracking-widest text-brand-gray-text mb-4">
+            <span className="text-brand-red mr-2" aria-hidden="true">■</span>
+            NOS SERVICES
+          </p>
+
+          <h2 className="section-title">
+            Choisissez votre{' '}
+            <span className="text-brand-red">opérateur</span>{' '}
+            de transfert
+          </h2>
+
+          <p className="font-karst font-light text-brand-gray-text text-base mt-4 max-w-md mx-auto">
+            Soumettez votre demande depuis l&apos;app, notre équipe s&apos;occupe du reste.
+          </p>
+        </motion.div>
 
         <motion.div
           variants={staggerContainer}
@@ -71,12 +94,9 @@ export default function ServicesSection() {
               <a
                 href="#"
                 onClick={(e) => e.preventDefault()}
-                className="font-karst font-bold text-xs tracking-[1.2px] uppercase text-brand-blue flex items-center gap-2 no-underline transition-opacity duration-200 hover:opacity-80"
+                className={`font-karst font-bold text-xs tracking-[1.2px] uppercase flex items-center gap-2 no-underline transition-opacity duration-200 hover:opacity-80 ${service.linkColorClass}`}
               >
-                EN SAVOIR PLUS
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M1 7h12M7 1l6 6-6 6" stroke="#0606EF" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                En savoir plus →
               </a>
             </motion.div>
           ))}

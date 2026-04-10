@@ -11,19 +11,37 @@ import { fadeInUp, staggerContainer, scaleIn } from '@/lib/animations';
 
 const TESTIMONIALS = [
   {
-    quote: "Je transfère de l'argent à ma famille au pays chaque mois. C'est le service le plus rapide que j'ai trouvé.",
-    author: 'Mariam K., Paris',
+    quote:
+      "J\u2019avais l\u2019habitude d\u2019envoyer mes demandes par WhatsApp \u2014 je ne savais jamais o\u00f9 en \u00e9tait mon transfert. Avec ASMI Transfert, je suis notifi\u00e9 \u00e0 chaque \u00e9tape. C\u2019est rassurant.",
+    name: 'Fatou K.',
+    role: 'Cliente, Cotonou',
     stars: 5,
+    borderClass: 'border-t-4 border-brand-red',
+    starClass: 'text-brand-red',
+    quoteClass: 'text-brand-red',
+    wrapperClass: '',
   },
   {
-    quote: "L'interface est super intuitive. Même pour quelqu'un qui n'est pas tech, c'est très facile.",
-    author: 'Jean-Pierre L., Lyon',
+    quote:
+      'Mon retrait RIA a \u00e9t\u00e9 trait\u00e9 en moins d\u2019une heure. L\u2019op\u00e9rateur a tout v\u00e9rifi\u00e9 et j\u2019ai re\u00e7u mon argent sur Mobile Money directement. Je recommande \u00e0 toute ma famille.',
+    name: 'Moussa D.',
+    role: 'Client, Porto-Novo',
     stars: 5,
+    borderClass: 'border-t-4 border-brand-blue',
+    starClass: 'text-brand-blue',
+    quoteClass: 'text-brand-blue',
+    wrapperClass: '-mt-4',
   },
   {
-    quote: 'Le service client est réactif et efficace. Je me sens en totale sécurité avec ASMI.',
-    author: 'Amadou T., Bruxelles',
+    quote:
+      'La v\u00e9rification KYC m\u2019a pris 5 minutes, une seule fois. Depuis, tous mes transferts MoneyGram sont trait\u00e9s sans friction. Une vraie diff\u00e9rence avec avant.',
+    name: 'A\u00efcha S.',
+    role: 'Cliente, Parakou',
     stars: 5,
+    borderClass: 'border-t-4 border-brand-red',
+    starClass: 'text-brand-red',
+    quoteClass: 'text-brand-red',
+    wrapperClass: '',
   },
 ] as const;
 
@@ -31,35 +49,39 @@ const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-white section-padding">
+    <section className="bg-[#F7F7F7] section-padding">
       <div className="container">
-        <motion.h2
+        <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="section-title tracking-[-2.4px] mb-16"
+          className="text-center mb-16"
         >
-          ILS NOUS FONT CONFIANCE
-        </motion.h2>
+          <p className="font-karst font-bold text-xs uppercase tracking-widest text-brand-gray-text mb-4">
+            <span className="text-brand-red mr-2" aria-hidden="true">■</span>
+            ILS NOUS FONT CONFIANCE
+          </p>
+          <h2 className="section-title">Ce que disent nos clients</h2>
+        </motion.div>
 
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"
         >
           {TESTIMONIALS.map((t) => (
             <motion.div
-              key={t.author}
+              key={t.name}
               variants={scaleIn}
-              className="bg-brand-gray-light rounded-card p-10 relative"
+              className={`bg-white shadow-sm p-10 relative ${t.borderClass} ${t.wrapperClass}`}
             >
               {/* Guillemet décoratif */}
               <span
                 aria-hidden="true"
-                className="absolute -top-4 left-4 text-[96px] text-brand-blue/10 font-serif leading-none select-none"
+                className={`block font-karst font-black text-6xl leading-none select-none mb-2 ${t.quoteClass}`}
               >
                 &ldquo;
               </span>
@@ -67,17 +89,22 @@ export default function TestimonialsSection() {
               {/* Étoiles */}
               <div className="mb-4" role="img" aria-label={`Note : ${t.stars} étoiles sur 5`}>
                 {Array.from({ length: t.stars }).map((_, i) => (
-                  <span key={i} className="text-brand-red text-sm" aria-hidden="true">★</span>
+                  <span key={i} className={`text-sm ${t.starClass}`} aria-hidden="true">★</span>
                 ))}
               </div>
 
-              <p className="font-karst font-light text-sm leading-5 text-brand-text-body mb-4">
+              <p className="font-karst font-light text-sm leading-6 text-brand-text-body mb-6">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
-              <p className="font-karst font-bold text-xs tracking-[0.6px] uppercase text-brand-text-dark m-0">
-                — {t.author}
-              </p>
+              <div>
+                <p className="font-karst font-bold text-sm text-brand-text-dark m-0">
+                  {t.name}
+                </p>
+                <p className="font-karst font-light text-xs text-brand-gray-text m-0 mt-1">
+                  {t.role}
+                </p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

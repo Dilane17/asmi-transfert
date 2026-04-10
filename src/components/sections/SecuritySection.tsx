@@ -1,51 +1,69 @@
 /**
  * @section SecuritySection
- * @description Sécurité bancaire — fond noir, 4 blocs
+ * @description Sécurité bancaire — fond navy, 4 blocs en grid 2x2
  * @figma https://www.figma.com/design/VlZmkzRjZZ2yCkIfMHpjnT/ASMI?node-id=1:112
  */
 
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInLeft, staggerContainer, scaleIn } from '@/lib/animations';
+import { fadeInUp, staggerContainer, scaleIn } from '@/lib/animations';
 
 const SECURITY_BLOCKS = [
-  { icon: '🔐', title: 'Authentification', description: 'Protection biométrique multi-facteurs pour chaque transaction.' },
-  { icon: '🔒', title: 'Chiffrement',      description: 'Protocoles SSL/TLS 256-bits de niveau militaire.' },
-  { icon: '🪪', title: 'KYC Avancé',       description: "Vérification d'identité en temps réel pour lutter contre la fraude." },
-  { icon: '📡', title: 'Audit Constant',   description: 'Surveillance proactive 24/7 de toutes les activités suspectes.' },
+  {
+    title: 'Authentification sécurisée',
+    description:
+      'OTP SMS, biométrie (Face ID / empreinte) et code PIN obligatoire pour toute soumission de demande.',
+    borderClass: 'border-l-brand-blue',
+  },
+  {
+    title: 'Données chiffrées',
+    description:
+      'TLS 1.3 en transit, stockage sécurisé — vos informations ne sont jamais accessibles à des tiers.',
+    borderClass: 'border-l-brand-red',
+  },
+  {
+    title: 'Vérification KYC',
+    description:
+      'Contrôle d\u2019identité structuré (CNI, passeport) pour prévenir la fraude et garantir la conformité réglementaire.',
+    borderClass: 'border-l-brand-blue',
+  },
+  {
+    title: 'Traçabilité totale',
+    description:
+      'Journal d\u2019audit complet, horodaté et non modifiable — chaque action liée à son opérateur.',
+    borderClass: 'border-l-brand-red',
+  },
 ] as const;
 
 const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function SecuritySection() {
   return (
-    <section id="security" className="bg-brand-black section-padding">
+    <section id="security" className="bg-[#0A0A2E] section-padding">
       <div className="container">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 
-        {/* Colonne gauche */}
+        {/* En-tête */}
         <motion.div
-          variants={fadeInLeft}
+          variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
+          className="text-center mb-16"
         >
-        
-          <h2 className="font-karst font-bold text-[72px] leading-18 tracking-[-3.6px] uppercase text-white whitespace-pre-line">
-            {`SÉCURITÉ\nBANCAIRE.`}
-          </h2>
-
-          <p className="font-karst font-light text-lg leading-7 text-brand-text-muted max-w-md mt-8">
-            Nous appliquons les standards de sécurité les plus stricts pour protéger chaque centime de vos transferts.
+          <p className="font-karst font-bold text-xs uppercase tracking-widest text-brand-blue mb-6">
+            SÉCURITÉ &amp; CONFORMITÉ
           </p>
-
-          <button type="button" className="btn-blue-pill mt-8">
-            NOTRE CONFORMITÉ
-          </button>
+          <h2 className="font-karst font-bold text-4xl md:text-5xl text-white leading-tight mb-6">
+            Votre sécurité, notre priorité
+          </h2>
+          <p className="font-karst font-light text-lg leading-7 text-white/60 max-w-xl mx-auto">
+            Chaque transaction est protégée par une architecture pensée pour
+            les services financiers en Afrique de l&apos;Ouest.
+          </p>
         </motion.div>
 
-        {/* Colonne droite — grille 2×2 */}
+        {/* Grille 2x2 */}
         <motion.div
           variants={staggerContainer}
           initial="hidden"
@@ -54,20 +72,36 @@ export default function SecuritySection() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {SECURITY_BLOCKS.map((block) => (
-            <motion.div key={block.title} variants={scaleIn} className="security-card">
-              <span className="text-2xl absolute top-7 left-9" aria-hidden="true">
-                {block.icon}
-              </span>
-              <h3 className="font-karst font-bold text-lg text-white mt-12 mb-2">
+            <motion.div
+              key={block.title}
+              variants={scaleIn}
+              className={`bg-white/5 border border-white/10 border-l-4 ${block.borderClass} p-8`}
+            >
+              <h3 className="font-karst font-bold text-lg text-white mb-3">
                 {block.title}
               </h3>
-              <p className="font-karst font-light text-xs leading-4 text-brand-gray-text m-0">
+              <p className="font-karst font-light text-sm leading-6 text-white/60 m-0">
                 {block.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
-      </div>
+
+        {/* Badge conformité */}
+        <motion.p
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="font-karst font-bold text-xs uppercase tracking-widest text-white/40 text-center mt-12"
+        >
+          Conforme RGPD
+          <span className="text-brand-red mx-2">·</span>
+          Données protégées
+          <span className="text-brand-red mx-2">·</span>
+          Anti-fraude
+        </motion.p>
+
       </div>
     </section>
   );

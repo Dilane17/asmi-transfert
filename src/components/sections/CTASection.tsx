@@ -29,15 +29,22 @@ export default function CTASection({ ctaMockupImage }: CTASectionProps) {
           viewport={VIEWPORT}
           className="max-w-full md:max-w-[50%] relative z-10"
         >
-          <h2 className="font-karst font-bold text-[48px] md:text-[72px] leading-13 md:leading-18 tracking-[-2.4px] md:tracking-[-3.6px] uppercase text-white whitespace-pre-line">
+          {/* Label section */}
+          <span className="font-karst font-bold text-xs uppercase tracking-widest text-white/60 border-b border-white/20 pb-2 inline-block mb-6">
+            APPLICATION MOBILE
+          </span>
+
+          <h2 className="font-karst font-bold text-[48px] md:text-[72px] leading-tight tracking-[-2.4px] md:tracking-[-3.6px] uppercase text-white whitespace-pre-line">
             {`TÉLÉCHARGEZ\nASMI TRANSFERT`}
           </h2>
 
-          <p className="font-karst font-light text-lg leading-7 text-white/80 max-w-98 mt-8">
-            Prenez le contrôle de vos finances. Envoyez de l&apos;argent partout, tout le temps, en un clic.
+          <p className="font-karst font-light text-lg leading-7 text-white/80 max-w-md mt-4 mb-8">
+            Fini les demandes par WhatsApp ou appel. Gérez tous vos transferts
+            Western Union, RIA et MoneyGram depuis votre smartphone — avec suivi
+            en temps réel, notifications et historique complet.
           </p>
 
-          <div className="flex gap-4 mt-8 flex-wrap">
+          <div className="flex gap-4 flex-wrap">
             {/* App Store */}
             <a href="#" onClick={(e) => e.preventDefault()} aria-label="Télécharger ASMI Transfert sur l'App Store" className="btn-store">
               <svg width="20" height="24" viewBox="0 0 20 24" fill="none" aria-hidden="true">
@@ -63,6 +70,10 @@ export default function CTASection({ ctaMockupImage }: CTASectionProps) {
               </div>
             </a>
           </div>
+
+          <p className="font-karst font-light text-xs text-white/50 mt-4">
+            iOS 13+ · Android 8+ · 100% Gratuit
+          </p>
         </motion.div>
 
         {/* Mockup droit */}

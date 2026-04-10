@@ -11,40 +11,34 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 const STEPS = [
   {
-    step: 1,
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <path d="M14 4v16M6 12l8 8 8-8" stroke="#E00505" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M4 22h20" stroke="#E00505" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
-    iconBg: 'bg-brand-red/10',
-    title: 'TÉLÉCHARGEZ',
-    description: "Créez votre compte ASMI en quelques minutes sur iOS ou Android.",
+    step: '01',
+    title: 'Téléchargez l\u2019application',
+    description:
+      'Créez votre compte gratuitement sur iOS ou Android. Vérifiez votre identité (KYC) une seule fois — vos données sont protégées et chiffrées.',
+    bgClass: 'bg-white border-l-4 border-brand-red',
+    numberClass: 'text-brand-red',
+    titleClass: 'text-brand-text-dark',
+    textClass: 'text-brand-gray-text',
   },
   {
-    step: 2,
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <rect x="5" y="3" width="18" height="22" rx="2" stroke="#E00505" strokeWidth="2" />
-        <path d="M9 9h10M9 14h10M9 19h6" stroke="#E00505" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
-    iconBg: 'bg-brand-red/[0.16]',
-    title: 'SOUMETTEZ',
-    description: "Remplissez le formulaire de transfert avec les détails du bénéficiaire.",
+    step: '02',
+    title: 'Soumettez votre demande',
+    description:
+      'Choisissez Western Union, RIA ou MoneyGram. Renseignez les détails de votre transfert et confirmez avec votre code PIN sécurisé.',
+    bgClass: 'bg-brand-red',
+    numberClass: 'text-white/20',
+    titleClass: 'text-white',
+    textClass: 'text-white/80',
   },
   {
-    step: 3,
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="10" stroke="#E00505" strokeWidth="2" />
-        <path d="M9 14l4 4 6-7" stroke="#E00505" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-    iconBg: 'bg-brand-red/20',
-    title: 'RECEVEZ',
-    description: "Votre transfert est validé et les fonds sont envoyés immédiatement.",
+    step: '03',
+    title: 'Recevez votre argent',
+    description:
+      'Un opérateur ASMI prend en charge votre demande, effectue les vérifications et exécute le décaissement vers votre Mobile Money. Notifié à chaque étape.',
+    bgClass: 'bg-brand-blue',
+    numberClass: 'text-white/20',
+    titleClass: 'text-white',
+    textClass: 'text-white/80',
   },
 ] as const;
 
@@ -54,36 +48,44 @@ export default function ProcessSection() {
   return (
     <section id="process" className="bg-white section-padding">
       <div className="container">
-        <motion.h2
+        <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="section-title mb-16"
+          className="mb-16 text-center"
         >
-          COMMENT ÇA MARCHE ?
-        </motion.h2>
+          <p className="font-karst font-bold text-xs uppercase tracking-widest text-brand-gray-text mb-4">
+            <span className="text-brand-red mr-2" aria-hidden="true">■</span>
+            COMMENT ÇA MARCHE ?
+          </p>
+          <h2 className="section-title">
+            3 étapes simples pour vos transferts
+          </h2>
+        </motion.div>
 
         <motion.div
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-3 gap-0"
         >
           {STEPS.map((s) => (
             <motion.div
               key={s.step}
               variants={fadeInUp}
-              className="bg-white border border-brand-gray-border rounded-card p-10.25 flex flex-col items-center text-center"
+              className={`p-10 flex flex-col ${s.bgClass}`}
             >
-              <div className={`step-icon ${s.iconBg}`}>{s.icon}</div>
+              <span className={`font-karst font-black text-6xl leading-none mb-6 ${s.numberClass}`}>
+                {s.step}
+              </span>
 
-              <h3 className="font-karst font-bold text-xl uppercase text-brand-text-dark mb-4">
+              <h3 className={`font-karst font-bold text-xl uppercase mb-4 ${s.titleClass}`}>
                 {s.title}
               </h3>
 
-              <p className="font-karst font-light text-sm leading-5 text-brand-gray-text text-center">
+              <p className={`font-karst font-light text-sm leading-6 ${s.textClass}`}>
                 {s.description}
               </p>
             </motion.div>

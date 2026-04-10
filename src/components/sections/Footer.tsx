@@ -9,13 +9,15 @@
 import Image from 'next/image';
 
 const NAV_LINKS = [
-  { label: 'Accueil',  href: '/' },
-  { label: 'Services', href: '#services' },
-  { label: 'Sécurité', href: '#security' },
-  { label: 'Contact',  href: '#' },
+  { label: 'Accueil',           href: '/'         },
+  { label: 'Services',          href: '#services'  },
+  { label: 'Comment ça marche', href: '#process'   },
+  { label: 'Sécurité',          href: '#security'  },
+  { label: 'FAQ',               href: '#faq'       },
+  { label: 'Contact',           href: '#contact'   },
 ];
-const PARTNER_LINKS = ['Western Union', 'Ria Money', 'MoneyGram'];
-const LEGAL_LINKS   = ['Mentions Légales', 'Politique de Confidentialité'];
+const PARTNER_LINKS = ['Western Union', 'RIA Money Transfer', 'MoneyGram'];
+const LEGAL_LINKS   = ['Mentions Légales', 'Politique de confidentialité'];
 
 export default function Footer() {
   return (
@@ -32,25 +34,19 @@ export default function Footer() {
             className="h-15 w-auto object-contain mb-4 brightness-0 invert mx-auto sm:mx-0"
           />
 
-          <p className="pl-3 font-karst font-light text-xs tracking-[0.6px] uppercase text-brand-text-muted leading-4.5 max-w-65 mb-6 mx-auto sm:mx-0">
-            Solutions financières structurées pour une économie globale
-            connectée.
+          <p className="pl-3 font-karst font-light text-xs tracking-[0.6px] text-brand-text-muted leading-4.5 max-w-65 mb-6 mx-auto sm:mx-0">
+            Simplifiez vos transferts d&apos;argent
           </p>
 
           {/* Réseaux sociaux */}
-          <div className="flex gap-3 justify-center sm:justify-start pl-3 ">
+          <div className="flex gap-3 justify-center sm:justify-start pl-3">
             <a
               href="#"
               onClick={(e) => e.preventDefault()}
               aria-label="Facebook"
               className="footer-social-icon"
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
             </a>
@@ -60,12 +56,7 @@ export default function Footer() {
               aria-label="Twitter"
               className="footer-social-icon"
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
@@ -75,14 +66,7 @@ export default function Footer() {
               aria-label="Instagram"
               className="footer-social-icon"
             >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="4" />
                 <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
@@ -93,15 +77,15 @@ export default function Footer() {
 
         {/* Colonne 2 — Navigation */}
         <div>
-          <span className="footer-col-title">NAVIGATION</span>
+          <span className="block font-karst font-bold text-xs uppercase tracking-widest text-brand-red mb-5">
+            Navigation
+          </span>
           <div className="flex flex-col gap-4">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                onClick={
-                  link.href === "#" ? (e) => e.preventDefault() : undefined
-                }
+                onClick={link.href === '#contact' ? (e) => e.preventDefault() : undefined}
                 className="footer-link"
               >
                 {link.label}
@@ -112,7 +96,9 @@ export default function Footer() {
 
         {/* Colonne 3 — Partenaires */}
         <div>
-          <span className="footer-col-title">PARTENAIRES</span>
+          <span className="block font-karst font-bold text-xs uppercase tracking-widest text-brand-red mb-5">
+            Partenaires
+          </span>
           <div className="flex flex-col gap-4">
             {PARTNER_LINKS.map((link) => (
               <a
@@ -127,32 +113,29 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Colonne 4 — Téléchargement */}
+        {/* Colonne 4 — L'Application */}
         <div>
-          <span className="footer-col-title">TÉLÉCHARGEMENT</span>
+          <span className="block font-karst font-bold text-xs uppercase tracking-widest text-brand-red mb-5">
+            L&apos;Application
+          </span>
           <div className="flex flex-col gap-3">
-            <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              className="footer-dl-btn"
-            >
+            <a href="#" onClick={(e) => e.preventDefault()} className="footer-dl-btn">
               App Store
             </a>
-            <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              className="footer-dl-btn"
-            >
+            <a href="#" onClick={(e) => e.preventDefault()} className="footer-dl-btn">
               Google Play
             </a>
+            <p className="font-karst font-light text-xs text-brand-gray-text mt-1">
+              iOS &amp; Android — Gratuit
+            </p>
           </div>
         </div>
       </div>
 
       {/* Barre bas */}
-      <div className="container mt-16 border-t border-white/5 py-10 flex flex-col md:flex-row justify-between items-center md:items-center flex-wrap gap-4">
+      <div className="container mt-12 border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center flex-wrap gap-4">
         <span className="footer-bottom-text">
-          © {new Date().getFullYear()} ASMI TRANSFERT.
+          © 2026 ASMI Transfert — Tous droits réservés
         </span>
         <span className="footer-bottom-text">MADE BY HUSTLERLABS</span>
         <div className="flex gap-6 justify-center">

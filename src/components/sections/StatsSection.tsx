@@ -10,10 +10,10 @@ import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 
 const STATS = [
-  { value: '500K+', label: 'Utilisateurs actifs',          hasStarIcon: false },
-  { value: '10M+',  label: 'Transactions\nréussies',        hasStarIcon: false },
-  { value: '200+',  label: 'Points de retrait en\nAfrique', hasStarIcon: false },
-  { value: '4.8/5', label: 'Note moyenne sur\nles stores',  hasStarIcon: true  },
+  { value: '3',     label: 'Opérateurs partenaires',    colorClass: 'text-brand-red'  },
+  { value: '100%',  label: 'Transactions sécurisées',   colorClass: 'text-brand-blue' },
+  { value: '< 2h',  label: 'Délai de traitement moyen', colorClass: 'text-brand-red'  },
+  { value: '24/7',  label: 'Suivi en temps réel',       colorClass: 'text-brand-blue' },
 ] as const;
 
 const VIEWPORT = { once: true, margin: '-100px' };
@@ -36,15 +36,12 @@ export default function StatsSection() {
             variants={fadeInUp}
             className={`px-12 ${index < STATS.length - 1 ? 'border-r border-brand-gray-border' : ''}`}
           >
-            <div className="relative inline-block mb-3">
-              <span className="stat-value">{stat.value}</span>
-              {stat.hasStarIcon && (
-                <span aria-hidden="true" className="absolute top-0 -right-6 text-xl text-brand-red leading-none">
-                  ★
-                </span>
-              )}
-            </div>
-            <p className="stat-label">{stat.label}</p>
+            <span className={`font-karst font-bold text-[60px] leading-[60px] block mb-3 ${stat.colorClass}`}>
+              {stat.value}
+            </span>
+            <p className="font-karst font-bold text-sm tracking-[2.1px] uppercase text-brand-gray-text whitespace-pre-line m-0">
+              {stat.label}
+            </p>
           </motion.div>
         ))}
       </motion.div>
@@ -56,16 +53,9 @@ export default function StatsSection() {
             key={stat.value}
             className={`px-6 ${index % 2 === 0 ? 'border-r border-brand-gray-border' : ''}`}
           >
-            <div className="relative inline-block mb-2">
-              <span className="font-karst font-bold text-[40px] leading-10 text-brand-red block">
-                {stat.value}
-              </span>
-              {stat.hasStarIcon && (
-                <span aria-hidden="true" className="absolute top-0 -right-5 text-base text-brand-red leading-none">
-                  ★
-                </span>
-              )}
-            </div>
+            <span className={`font-karst font-bold text-[40px] leading-10 block mb-2 ${stat.colorClass}`}>
+              {stat.value}
+            </span>
             <p className="font-karst font-bold text-xs tracking-[1.8px] uppercase text-brand-gray-text whitespace-pre-line m-0">
               {stat.label}
             </p>

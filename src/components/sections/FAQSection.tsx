@@ -10,38 +10,48 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer } from '@/lib/animations';
 
-type Category = 'Général' | 'Transferts' | 'Sécurité';
+const FAQ_ITEMS = [
+  {
+    q: 'Comment soumettre une demande ?',
+    a: "Téléchargez l'app, créez votre compte, choisissez votre opérateur (WU, RIA ou MG), renseignez les détails et confirmez avec votre code PIN. La demande est transmise instantanément à nos opérateurs.",
+  },
+  {
+    q: 'Combien de temps prend le traitement ?',
+    a: 'La majorité des demandes sont traitées en moins de 2 heures. Vous êtes notifié en temps réel à chaque changement de statut.',
+  },
+  {
+    q: 'Pourquoi vérifier mon identité (KYC) ?',
+    a: 'La vérification KYC est exigée par la réglementation financière. Elle protège votre compte contre la fraude et sécurise chaque transaction.',
+  },
+  {
+    q: 'Quels documents sont acceptés pour le KYC ?',
+    a: 'CNI ou passeport en cours de validité — photo recto/verso prise depuis l\u2019appareil photo de votre smartphone.',
+  },
+  {
+    q: 'Y a-t-il des frais cachés ?',
+    a: 'Non. Le détail complet des frais vous est affiché avant toute confirmation de demande — aucune surprise.',
+  },
+  {
+    q: 'J\u2019ai oublié mon code PIN, que faire ?',
+    a: 'Paramètres → Sécurité → Réinitialiser le code PIN. Une vérification OTP SMS confirme votre identité.',
+  },
+  {
+    q: 'Les transferts sont-ils traités le week-end ?',
+    a: 'Oui, du lundi au samedi. Les demandes du dimanche sont traitées dès le lundi matin.',
+  },
+  {
+    q: 'Quelle différence entre WU, RIA et MoneyGram ?',
+    a: 'Les trois sont des opérateurs internationaux reconnus. Le choix dépend du réseau de l\u2019expéditeur. ASMI Transfert gère les trois depuis une seule interface.',
+  },
+] as const;
 
-const FAQ_DATA: Record<Category, { q: string; a: string }[]> = {
-  Général: [
-    { q: 'Quels sont les délais de transfert ?', a: "Les transferts sont généralement traités en quelques minutes selon l'opérateur choisi." },
-    { q: 'Quels sont les documents requis ?', a: "Une pièce d'identité valide (CNI, Passeport) est nécessaire pour toute opération conformément aux réglementations bancaires en vigueur." },
-    { q: "Où puis-je retirer l'argent ?", a: 'Vous pouvez retirer dans plus de 200 points de retrait en Afrique et en Europe.' },
-    { q: 'Quels sont les frais de service ?', a: 'Nous ne prenons pas de fraias sur nos service, tout es entièrement gratuit sur asmi-transfert.' },
-  ],
-  Transferts: [
-    { q: 'Quel est le montant maximum par transfert ?', a: 'Le plafond de transfert dépend de votre niveau de vérification KYC et de la réglementation en vigueur dans votre pays.' },
-    { q: 'Puis-je annuler un transfert en cours ?', a: "Un transfert peut être annulé tant qu'il n'a pas été récupéré par le bénéficiaire. Contactez notre support immédiatement." },
-    { q: "Dans quels pays puis-je envoyer de l'argent ?", a: "Nous couvrons plus de 50 pays en Afrique et en Europe via nos partenaires Western Union, Ria Money et MoneyGram." },
-  ],
-  Sécurité: [
-    { q: 'Mes données sont-elles protégées ?', a: 'Oui, toutes les données sont chiffrées en SSL/TLS 256-bits et stockées conformément au RGPD.' },
-    { q: "Que faire en cas d'activité suspecte ?", a: "Contactez immédiatement notre support disponible 24/7. Votre compte sera temporairement suspendu par mesure de précaution." },
-    { q: 'Comment fonctionne le KYC ?', a: "La vérification d'identité se fait en temps réel via notre partenaire de vérification. Elle prend généralement moins de 5 minutes." },
-  ],
-};
-
-const CATEGORIES: Category[] = ['Général', 'Transferts', 'Sécurité'];
 const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function FAQSection() {
-  const [activeCategory, setActiveCategory] = useState<Category>('Général');
-  const [openIndex, setOpenIndex]           = useState<number | null>(null);
-
-  const items = FAQ_DATA[activeCategory];
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="bg-brand-gray-light section-padding">
+    <section id="faq" className="bg-white section-padding">
       <div className="container">
       <div className="max-w-4xl mx-auto">
 
@@ -50,31 +60,18 @@ export default function FAQSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
+          className="text-center mb-12"
         >
-          <h2 className="font-karst font-bold text-[36px] tracking-[-1.8px] uppercase text-brand-text-dark text-center">
-            FOIRE AUX QUESTIONS
+          <p className="font-karst font-bold text-xs uppercase tracking-widest text-brand-gray-text mb-4">
+            <span className="text-brand-red mr-2" aria-hidden="true">■</span>
+            FAQ
+          </p>
+          <h2 className="font-karst font-bold text-[36px] tracking-[-1.8px] uppercase text-brand-text-dark">
+            Questions fréquentes
           </h2>
-
-          {/* Filtres */}
-          <div className="flex justify-center gap-4 mt-8 mb-8 flex-wrap">
-            {CATEGORIES.map((cat) => {
-              const isActive = cat === activeCategory;
-              return (
-                <button
-                  key={cat}
-                  type="button"
-                  onClick={() => { setActiveCategory(cat); setOpenIndex(null); }}
-                  className={`font-karst font-bold text-xs tracking-[1.2px] uppercase rounded-pill px-6 py-2.5 cursor-pointer transition-all duration-200 ${
-                    isActive
-                      ? 'bg-brand-red text-white border-0'
-                      : 'bg-white text-brand-gray-text border border-brand-gray-border'
-                  }`}
-                >
-                  {cat}
-                </button>
-              );
-            })}
-          </div>
+          <p className="font-karst font-light text-brand-gray-text text-base mt-4 max-w-md mx-auto">
+            Tout ce que vous devez savoir sur nos services de transfert d&apos;argent.
+          </p>
         </motion.div>
 
         {/* Accordéon */}
@@ -85,11 +82,11 @@ export default function FAQSection() {
           viewport={VIEWPORT}
           className="flex flex-col gap-3"
         >
-          {items.map((item, index) => {
+          {FAQ_ITEMS.map((item, index) => {
             const isOpen = openIndex === index;
             return (
               <motion.div
-                key={`${activeCategory}-${index}`}
+                key={index}
                 variants={fadeInUp}
                 className={`faq-item ${isOpen ? 'open' : ''}`}
               >
@@ -97,7 +94,7 @@ export default function FAQSection() {
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   aria-expanded={isOpen}
-                  aria-controls={`faq-panel-${activeCategory}-${index}`}
+                  aria-controls={`faq-panel-${index}`}
                   className="w-full flex justify-between items-center p-6.25 bg-transparent border-0 cursor-pointer text-left gap-4"
                 >
                   <span className={`font-karst font-bold text-[15px] transition-colors duration-300 ${isOpen ? 'text-brand-red' : 'text-brand-text-dark'}`}>
@@ -112,7 +109,7 @@ export default function FAQSection() {
                 </button>
 
                 <div
-                  id={`faq-panel-${activeCategory}-${index}`}
+                  id={`faq-panel-${index}`}
                   role="region"
                   className="overflow-hidden transition-all duration-300 ease-in-out"
                   style={{ maxHeight: isOpen ? '300px' : '0' }}

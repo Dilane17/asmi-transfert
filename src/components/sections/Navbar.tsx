@@ -12,11 +12,12 @@ import Image from 'next/image';
 import Button from '@/components/ui/Button';
 
 const NAV_LINKS = [
-  { label: 'Accueil',          href: '/'         },
-  { label: 'Services',         href: '#services'  },
-  { label: 'Comment ça marche',href: '#process'   },
-  { label: 'Sécurité',         href: '#security'  },
-  { label: 'FAQ',              href: '#faq'       },
+  { label: 'Accueil',           href: '/'          },
+  { label: 'Services',          href: '#services'  },
+  { label: 'Comment ça marche', href: '#process'   },
+  { label: 'Sécurité',          href: '#security'  },
+  { label: 'FAQ',               href: '#faq'       },
+  { label: 'Contact',           href: '#contact'   },
 ];
 
 const SECTION_IDS = ['services', 'process', 'security', 'faq'];
@@ -86,7 +87,7 @@ export default function Navbar() {
         {/* CTA desktop */}
         <div className="hidden md:block">
           <Button variant="primary" href="#" onClick={(e) => e.preventDefault()} className="w-43.25">
-            Télécharger
+            Télécharger l&apos;app
           </Button>
         </div>
 
@@ -125,7 +126,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Button variant="primary" href="#" onClick={(e) => e.preventDefault()} className="mt-2 w-full justify-center">
-            Ouvrir un compte
+            Télécharger l&apos;app
           </Button>
         </nav>
       </div>
