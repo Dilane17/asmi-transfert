@@ -1,236 +1,92 @@
 /**
  * @section HeroSection
- * @description Section hero principale avec titre, CTA et mockup smartphone oblique
+ * @description Section hero principale avec titre, CTA et mockup smartphone
  * @figma https://www.figma.com/design/VlZmkzRjZZ2yCkIfMHpjnT/ASMI?node-id=1:4
  */
 
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { fadeInLeft, fadeInRight } from "@/lib/animations";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { fadeInLeft, fadeInRight } from '@/lib/animations';
 
 interface HeroSectionProps {
   mockupImage?: string;
 }
 
-const VIEWPORT = { once: true, margin: "-100px" };
+const VIEWPORT = { once: true, margin: '-100px' };
 
 export default function HeroSection({ mockupImage }: HeroSectionProps) {
   return (
-    <>
-      {/* ── DESKTOP (lg+) ──────────────────────────────────────── */}
-      <section
-        className="relative hidden lg:block"
-        style={{
-          height: "100vh",
-          minHeight: "800px",
-          background: "linear-gradient(160deg, #E00505 60%, #F9F9F9 60.1%)",
-        }}
+    <section className="flex flex-col md:flex-row min-h-screen">
+
+      {/* ── Panneau droit — bleu / image (en premier sur mobile) ── */}
+      <motion.div
+        variants={fadeInRight}
+        initial="hidden"
+        whileInView="visible"
+        viewport={VIEWPORT}
+        transition={{ delay: 0.2 }}
+        className="w-full md:w-[45%] bg-brand-blue flex items-center justify-center pt-24 pb-10 md:py-0 order-1 md:order-2 min-h-[45vw] md:min-h-screen"
       >
-        {/* Texte — aligné sur le container navbar */}
-        <div className="container h-full flex items-center pt-20">
-          <motion.div
-            variants={fadeInLeft}
-            initial="hidden"
-            whileInView="visible"
-            viewport={VIEWPORT}
-            className="flex flex-col justify-center gap-6 w-[52%]"
+        <Image
+          src={mockupImage || '/images/hero-mockup.png'}
+          alt="ASMI Transfert App"
+          width={400}
+          height={800}
+          className="w-40 sm:w-50 md:w-[75%] max-w-80 h-auto object-contain drop-shadow-2xl"
+          priority
+        />
+      </motion.div>
+
+      {/* ── Panneau gauche — rouge / texte ── */}
+      <motion.div
+        variants={fadeInLeft}
+        initial="hidden"
+        whileInView="visible"
+        viewport={VIEWPORT}
+        className="w-full md:w-[55%] bg-brand-red px-6 sm:px-10 md:px-16 pt-20 pb-12 md:py-24 flex flex-col justify-center order-2 md:order-1"
+      >
+        {/* Pill label */}
+        <span className="border border-white/60 text-white text-[10px] sm:text-xs px-3 py-1.5 rounded-full inline-block mb-4 md:mb-8 tracking-widest uppercase bg-white/10 w-fit font-karst font-light">
+          Western Union · RIA · MoneyGram
+        </span>
+
+        {/* H1 */}
+        <h1 className="font-karst font-black text-[2.8rem] sm:text-5xl md:text-5xl lg:text-6xl xl:text-7xl text-white leading-none uppercase tracking-tight">
+          <span className="block">ENVOYEZ.</span>
+          <span className="block">RECEVEZ.</span>
+          <span className="block">EN TOUTE SÉCURITÉ.</span>
+        </h1>
+
+        {/* Sous-titre */}
+        <p className="font-karst font-light text-sm sm:text-base md:text-lg text-white/85 mt-4 mb-6 md:mt-6 md:mb-8 max-w-sm leading-relaxed">
+          Western Union, RIA, MoneyGram — un seul canal sécurisé pour toutes
+          vos demandes de transfert international.
+        </p>
+
+        {/* Boutons */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <button
+            type="button"
+            className="font-karst font-bold bg-white text-brand-red px-6 py-3 sm:px-8 sm:py-4 rounded-none text-xs sm:text-sm uppercase tracking-widest hover:bg-brand-blue hover:text-white transition-all duration-200 border-2 border-white text-center cursor-pointer"
           >
-            {/* Pill Label */}
-            <div className="inline-flex w-fit">
-              <span
-                className="font-karst font-light text-white/85 text-xs uppercase tracking-wider px-4 py-2 rounded-pill"
-                style={{
-                  border: "1px solid rgba(255, 255, 255, 0.3)",
-                  backgroundColor: "rgba(255, 255, 255, 0.05)",
-                }}
-              >
-                Western Union · RIA · MoneyGram
-              </span>
-            </div>
-
-            <h1
-              className="font-karst font-bold text-white uppercase leading-tight"
-              style={{
-                fontSize: "clamp(56px, 5.5vw, 70px)",
-                letterSpacing: "-3px",
-              }}
-            >
-              ENVOYEZ.
-              <br />
-              RECEVEZ.
-              <br />
-              EN TOUTE SÉCURITÉ.
-            </h1>
-
-            <p className="font-karst font-light text-white/90 text-base leading-relaxed max-w-110">
-              Fini les demandes par WhatsApp ou SMS. ASMI Transfert centralise
-              vos transferts d&apos;argent internationaux en un seul endroit —
-              rapide, traçable et 100% sécurisé.
-            </p>
-
-            <motion.div
-              variants={fadeInLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={VIEWPORT}
-              transition={{ delay: 0.3 }}
-              className="flex gap-4 items-center"
-            >
-              <button
-                type="button"
-                className="font-karst font-bold text-brand-red uppercase tracking-wider text-sm bg-white rounded-pill px-7 py-4 border-none cursor-pointer"
-                style={{ boxShadow: "0 8px 20px rgba(0,0,0,0.12)" }}
-              >
-                Télécharger l&apos;app
-              </button>
-              <button
-                type="button"
-                className="font-karst font-bold text-white uppercase tracking-wider text-sm bg-transparent rounded-pill px-7 py-3.5 cursor-pointer"
-                style={{ border: "2px solid rgba(255,255,255,0.7)" }}
-              >
-                Découvrir nos services
-              </button>
-            </motion.div>
-
-            {/* Texte bas */}
-            <p className="font-karst font-light text-white/70 text-xs mt-4">
-              Disponible iOS &amp; Android — Gratuit
-            </p>
-          </motion.div>
+            Télécharger l&apos;app
+          </button>
+          <button
+            type="button"
+            className="font-karst font-semibold border-2 border-white text-white px-6 py-3 sm:px-8 sm:py-4 rounded-none text-xs sm:text-sm uppercase tracking-widest hover:bg-white hover:text-brand-red transition-all duration-200 text-center cursor-pointer"
+          >
+            Découvrir nos services
+          </button>
         </div>
 
-        {/* Image — absolute sur toute la moitié droite, grande sans contrainte */}
-        <motion.div
-          variants={fadeInRight}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT}
-          transition={{ delay: 0.2 }}
-          className="absolute -top-60 -bottom-24 right-40 w-[52%] flex items-center justify-center pointer-events-none"
-        >
-          <div
-            className="relative shrink-0"
-            style={{
-              width: "720px",
-              height: "820px",
-              transform: "rotate(12deg) translateX(60px) translateY(10px)",
-            }}
-          >
-            <Image
-              src={mockupImage || "/images/hero-mockup.png"}
-              alt="ASMI Transfert App"
-              fill
-              className="object-contain pointer-events-none mt-15"
-              priority
-            />
-          </div>
-        </motion.div>
+        {/* Badge bas */}
+        <p className="font-karst font-light text-white/70 text-xs mt-4">
+          Disponible iOS &amp; Android — Gratuit
+        </p>
+      </motion.div>
 
-        {/* Éléments décoratifs */}
-        <div
-          aria-hidden="true"
-          className="absolute pointer-events-none bg-white/5"
-          style={{
-            left: "-151px",
-            top: "-119px",
-            width: "526px",
-            height: "678px",
-            transform: "rotate(-15deg)",
-          }}
-        />
-      </section>
-
-      {/* ── MOBILE (< lg) ──────────────────────────────────────── */}
-      <section className="relative overflow-hidden lg:hidden bg-brand-red pb-16">
-        {/* Texte — côté gauche, largeur limitée pour laisser place à l'image */}
-        <motion.div
-          variants={fadeInLeft}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT}
-          className="relative z-10 pt-16 px-6 flex flex-col gap-5 w-[60%]"
-        >
-          {/* Pill Label */}
-          <div className="inline-flex w-fit">
-            <span
-              className="font-karst font-light text-white/85 text-xs uppercase tracking-wider px-3 py-1.5 rounded-pill"
-              style={{
-                border: "1px solid rgba(255, 255, 255, 0.3)",
-                backgroundColor: "rgba(255, 255, 255, 0.05)",
-              }}
-            >
-              Western Union · RIA · MoneyGram
-            </span>
-          </div>
-
-          <h1
-            className="font-karst font-bold text-white uppercase leading-tight"
-            style={{
-              fontSize: "clamp(32px, 10vw, 52px)",
-              letterSpacing: "-1.5px",
-            }}
-          >
-            ENVOYEZ.
-            <br />
-            RECEVEZ.
-            <br />
-            EN TOUTE SÉCURITÉ.
-          </h1>
-
-          <p className="font-karst font-light text-white/90 text-xs leading-relaxed">
-            Fini les demandes par WhatsApp ou SMS. ASMI Transfert centralise vos
-            transferts d&apos;argent internationaux en un seul endroit — rapide,
-            traçable et 100% sécurisé.
-          </p>
-
-          <div className="flex flex-col gap-3">
-            <button
-              type="button"
-              className="font-karst font-bold text-brand-red uppercase tracking-wider text-xs bg-white rounded-pill px-5 py-3.5 border-none w-full cursor-pointer"
-            >
-              Télécharger l&apos;app
-            </button>
-            <button
-              type="button"
-              className="font-karst font-bold text-white uppercase tracking-wider text-xs bg-transparent rounded-pill px-5 py-3 w-full cursor-pointer"
-              style={{ border: "2px solid rgba(255,255,255,0.7)" }}
-            >
-              Nos services
-            </button>
-          </div>
-
-          {/* Texte bas */}
-          <p className="font-karst font-light text-white/70 text-xs mt-2">
-            Disponible iOS &amp; Android — Gratuit
-          </p>
-        </motion.div>
-
-        {/* Image — ancrée au niveau du h1 (top-24 = pt-24) */}
-        <motion.div
-          variants={fadeInRight}
-          initial="hidden"
-          whileInView="visible"
-          viewport={VIEWPORT}
-          transition={{ delay: 0.2 }}
-          className="absolute top-24 -right-4 w-[52%] pointer-events-none"
-          style={{ height: "58vw" }}
-        >
-          <div
-            className="relative w-full h-full"
-            style={{ transform: "rotate(12deg) translateX(8px)" }}
-          >
-            <Image
-              src={mockupImage || "/images/hero-mockup.png"}
-              alt="ASMI Transfert App"
-              fill
-              className="object-contain object-top pointer-events-none"
-              priority
-            />
-          </div>
-        </motion.div>
-      </section>
-    </>
+    </section>
   );
 }

@@ -19,7 +19,7 @@ const TESTIMONIALS = [
     borderClass: 'border-t-4 border-brand-red',
     starClass: 'text-brand-red',
     quoteClass: 'text-brand-red',
-    wrapperClass: '',
+    offsetClass: '',
   },
   {
     quote:
@@ -30,7 +30,7 @@ const TESTIMONIALS = [
     borderClass: 'border-t-4 border-brand-blue',
     starClass: 'text-brand-blue',
     quoteClass: 'text-brand-blue',
-    wrapperClass: '-mt-4',
+    offsetClass: 'md:-mt-4',
   },
   {
     quote:
@@ -41,7 +41,7 @@ const TESTIMONIALS = [
     borderClass: 'border-t-4 border-brand-red',
     starClass: 'text-brand-red',
     quoteClass: 'text-brand-red',
-    wrapperClass: '',
+    offsetClass: '',
   },
 ] as const;
 
@@ -70,13 +70,13 @@ export default function TestimonialsSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start"
         >
           {TESTIMONIALS.map((t) => (
             <motion.div
               key={t.name}
               variants={scaleIn}
-              className={`bg-white shadow-sm p-10 relative ${t.borderClass} ${t.wrapperClass}`}
+              className={`bg-white shadow-sm p-8 sm:p-10 relative ${t.borderClass} ${t.offsetClass}`}
             >
               {/* Guillemet décoratif */}
               <span

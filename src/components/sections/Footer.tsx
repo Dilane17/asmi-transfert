@@ -27,7 +27,7 @@ export default function Footer() {
   return (
     <footer className="bg-brand-black text-brand-text-muted">
       {/* Grille principale */}
-      <div className="container pt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1fr] gap-12 text-center sm:text-left">
+      <div className="container pt-20 pb-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 text-center sm:text-left">
         {/* Colonne 1 — Marque */}
         <div>
           <Image
@@ -35,41 +35,26 @@ export default function Footer() {
             alt="ASMI Transfert"
             width={140}
             height={36}
-            className="h-15 w-auto object-contain mb-4 brightness-0 invert mx-auto sm:mx-0"
+            className="h-12 w-auto object-contain mb-4 brightness-0 invert mx-auto sm:mx-0"
           />
 
-          <p className="pl-3 font-karst font-light text-xs tracking-[0.6px] text-brand-text-muted leading-4.5 max-w-65 mb-6 mx-auto sm:mx-0">
+          <p className="font-karst font-light text-xs tracking-[0.6px] text-brand-text-muted leading-5 max-w-52 mb-6 mx-auto sm:mx-0">
             Simplifiez vos transferts d&apos;argent
           </p>
 
           {/* Réseaux sociaux */}
-          <div className="flex gap-3 justify-center sm:justify-start pl-3">
-            <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              aria-label="Facebook"
-              className="footer-social-icon"
-            >
+          <div className="flex gap-3 justify-center sm:justify-start">
+            <a href="#" onClick={(e) => e.preventDefault()} aria-label="Facebook" className="footer-social-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
               </svg>
             </a>
-            <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              aria-label="Twitter"
-              className="footer-social-icon"
-            >
+            <a href="#" onClick={(e) => e.preventDefault()} aria-label="Twitter" className="footer-social-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
               </svg>
             </a>
-            <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              aria-label="Instagram"
-              className="footer-social-icon"
-            >
+            <a href="#" onClick={(e) => e.preventDefault()} aria-label="Instagram" className="footer-social-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <rect x="2" y="2" width="20" height="20" rx="5" />
                 <circle cx="12" cy="12" r="4" />
@@ -105,12 +90,7 @@ export default function Footer() {
           </span>
           <div className="flex flex-col gap-4">
             {PARTNER_LINKS.map((link) => (
-              <a
-                key={link}
-                href="#"
-                onClick={(e) => e.preventDefault()}
-                className="footer-link"
-              >
+              <a key={link} href="#" onClick={(e) => e.preventDefault()} className="footer-link">
                 {link}
               </a>
             ))}
@@ -123,12 +103,8 @@ export default function Footer() {
             L&apos;Application
           </span>
           <div className="flex flex-col gap-3">
-            <a href="#" onClick={(e) => e.preventDefault()} className="footer-dl-btn">
-              App Store
-            </a>
-            <a href="#" onClick={(e) => e.preventDefault()} className="footer-dl-btn">
-              Google Play
-            </a>
+            <a href="#" onClick={(e) => e.preventDefault()} className="footer-dl-btn">App Store</a>
+            <a href="#" onClick={(e) => e.preventDefault()} className="footer-dl-btn">Google Play</a>
             <p className="font-karst font-light text-xs text-brand-gray-text mt-1">
               iOS &amp; Android — Gratuit
             </p>
@@ -137,17 +113,17 @@ export default function Footer() {
       </div>
 
       {/* Barre bas */}
-      <div className="container mt-12 border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center flex-wrap gap-4">
+      <div className="container mt-12 border-t border-white/10 pt-6 pb-8 flex flex-col sm:flex-row justify-between items-center gap-3">
         <span className="footer-bottom-text">
           © 2026 ASMI Transfert — Tous droits réservés
         </span>
         <span className="footer-bottom-text">MADE BY HUSTLERLABS</span>
-        <div className="flex gap-6 justify-center">
+        <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
           {LEGAL_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="footer-link"
+              className="text-gray-500 text-xs hover:text-white transition-colors whitespace-nowrap"
             >
               {link.label}
             </Link>

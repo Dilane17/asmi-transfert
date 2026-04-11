@@ -57,7 +57,7 @@ export default function SecuritySection() {
           <h2 className="font-karst font-bold text-4xl md:text-5xl text-white leading-tight mb-6">
             Votre sécurité, notre priorité
           </h2>
-          <p className="font-karst font-light text-lg leading-7 text-white/60 max-w-xl mx-auto">
+          <p className="font-karst font-light text-base md:text-lg leading-7 text-white/60 max-w-xl mx-auto">
             Chaque transaction est protégée par une architecture pensée pour
             les services financiers en Afrique de l&apos;Ouest.
           </p>
@@ -69,13 +69,13 @@ export default function SecuritySection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
         >
           {SECURITY_BLOCKS.map((block) => (
             <motion.div
               key={block.title}
               variants={scaleIn}
-              className={`bg-white/5 border border-white/10 border-l-4 ${block.borderClass} p-8`}
+              className={`bg-white/5 border border-white/10 border-l-4 ${block.borderClass} p-6 md:p-8`}
             >
               <h3 className="font-karst font-bold text-lg text-white mb-3">
                 {block.title}

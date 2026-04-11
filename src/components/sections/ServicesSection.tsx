@@ -16,7 +16,6 @@ const SERVICES = [
     description:
       "Envoyez ou retirez un transfert Western Union en toute simplicité. Renseignez votre numéro de contrôle, notre opérateur vérifie et exécute le décaissement vers votre Mobile Money.",
     linkColorClass: 'text-brand-red',
-    linkStroke: '#E00505',
   },
   {
     number: '02',
@@ -24,7 +23,6 @@ const SERVICES = [
     description:
       "Accédez au réseau RIA pour vos transferts internationaux. Soumettez votre demande en quelques secondes, suivez son statut en temps réel.",
     linkColorClass: 'text-brand-blue',
-    linkStroke: '#0606EF',
   },
   {
     number: '03',
@@ -32,7 +30,6 @@ const SERVICES = [
     description:
       "Retirez ou envoyez de l'argent via MoneyGram avec une traçabilité complète. Chaque étape confirmée par notification jusqu'au décaissement.",
     linkColorClass: 'text-brand-red',
-    linkStroke: '#E00505',
   },
 ] as const;
 
@@ -49,7 +46,6 @@ export default function ServicesSection() {
           viewport={VIEWPORT}
           className="mb-12 text-center"
         >
-          {/* Label */}
           <p className="font-karst font-bold text-xs uppercase tracking-widest text-brand-gray-text mb-4">
             <span className="text-brand-red mr-2" aria-hidden="true">■</span>
             NOS SERVICES
@@ -71,7 +67,7 @@ export default function ServicesSection() {
           initial="hidden"
           whileInView="visible"
           viewport={VIEWPORT}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {SERVICES.map((service) => (
             <motion.div key={service.number} variants={scaleIn} className="card">

@@ -12,9 +12,9 @@ import { fadeInUp, staggerContainer } from '@/lib/animations';
 const STEPS = [
   {
     step: '01',
-    title: 'Téléchargez l\u2019application',
+    title: "Téléchargez l\u2019application",
     description:
-      'Créez votre compte gratuitement sur iOS ou Android. Vérifiez votre identité (KYC) une seule fois — vos données sont protégées et chiffrées.',
+      "Créez votre compte gratuitement sur iOS ou Android. Vérifiez votre identité (KYC) une seule fois — vos données sont protégées et chiffrées.",
     bgClass: 'bg-white border-l-4 border-brand-red',
     numberClass: 'text-brand-red',
     titleClass: 'text-brand-text-dark',
@@ -25,20 +25,20 @@ const STEPS = [
     title: 'Soumettez votre demande',
     description:
       'Choisissez Western Union, RIA ou MoneyGram. Renseignez les détails de votre transfert et confirmez avec votre code PIN sécurisé.',
-    bgClass: 'bg-brand-red',
-    numberClass: 'text-white/20',
-    titleClass: 'text-white',
-    textClass: 'text-white/80',
+    bgClass: 'bg-white border-l-4 border-brand-red',
+    numberClass: 'text-brand-red',
+    titleClass: 'text-brand-text-dark',
+    textClass: 'text-brand-gray-text',
   },
   {
     step: '03',
     title: 'Recevez votre argent',
     description:
       'Un opérateur ASMI prend en charge votre demande, effectue les vérifications et exécute le décaissement vers votre Mobile Money. Notifié à chaque étape.',
-    bgClass: 'bg-brand-blue',
-    numberClass: 'text-white/20',
-    titleClass: 'text-white',
-    textClass: 'text-white/80',
+    bgClass: 'bg-white border-l-4 border-brand-red',
+    numberClass: 'text-brand-red',
+    titleClass: 'text-brand-text-dark',
+    textClass: 'text-brand-gray-text',
   },
 ] as const;
 
@@ -75,9 +75,9 @@ export default function ProcessSection() {
             <motion.div
               key={s.step}
               variants={fadeInUp}
-              className={`p-10 flex flex-col ${s.bgClass}`}
+              className={`p-8 sm:p-10 md:p-12 flex flex-col ${s.bgClass}`}
             >
-              <span className={`font-karst font-black text-6xl leading-none mb-6 ${s.numberClass}`}>
+              <span className={`font-karst font-black text-5xl md:text-6xl leading-none mb-4 ${s.numberClass}`}>
                 {s.step}
               </span>
 

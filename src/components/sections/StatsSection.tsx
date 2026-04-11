@@ -7,7 +7,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { fadeInUp, staggerContainer } from '@/lib/animations';
+import { staggerContainer, fadeInUp } from '@/lib/animations';
 
 const STATS = [
   { value: '3',     label: 'Opérateurs partenaires',    colorClass: 'text-brand-red'  },
@@ -22,46 +22,28 @@ export default function StatsSection() {
   return (
     <section className="bg-white border-b border-brand-gray-border">
       <div className="container">
-      {/* Desktop */}
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView="visible"
-        viewport={VIEWPORT}
-        className="hidden md:grid grid-cols-4 pt-24 h-76.25"
-      >
-        {STATS.map((stat, index) => (
-          <motion.div
-            key={stat.value}
-            variants={fadeInUp}
-            className={`px-12 ${index < STATS.length - 1 ? 'border-r border-brand-gray-border' : ''}`}
-          >
-            <span className={`font-karst font-bold text-[60px] leading-[60px] block mb-3 ${stat.colorClass}`}>
-              {stat.value}
-            </span>
-            <p className="font-karst font-bold text-sm tracking-[2.1px] uppercase text-brand-gray-text whitespace-pre-line m-0">
-              {stat.label}
-            </p>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Mobile */}
-      <div className="grid md:hidden grid-cols-2 py-8 gap-8">
-        {STATS.map((stat, index) => (
-          <div
-            key={stat.value}
-            className={`px-6 ${index % 2 === 0 ? 'border-r border-brand-gray-border' : ''}`}
-          >
-            <span className={`font-karst font-bold text-[40px] leading-10 block mb-2 ${stat.colorClass}`}>
-              {stat.value}
-            </span>
-            <p className="font-karst font-bold text-xs tracking-[1.8px] uppercase text-brand-gray-text whitespace-pre-line m-0">
-              {stat.label}
-            </p>
-          </div>
-        ))}
-      </div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={VIEWPORT}
+          className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x md:divide-gray-200 py-12 md:py-16"
+        >
+          {STATS.map((stat) => (
+            <motion.div
+              key={stat.value}
+              variants={fadeInUp}
+              className="flex flex-col items-center text-center px-4"
+            >
+              <span className={`font-karst font-black text-4xl sm:text-5xl whitespace-nowrap leading-none mb-2 block ${stat.colorClass}`}>
+                {stat.value}
+              </span>
+              <p className="font-karst font-bold text-xs uppercase tracking-wide text-gray-500 font-medium leading-tight text-center m-0">
+                {stat.label}
+              </p>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
