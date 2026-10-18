@@ -2,6 +2,8 @@
 
 > Plateforme de transfert de fonds nouvelle génération pour l'Afrique et l'Europe.
 
+📖 Étude de cas détaillée : [ASMI Transfert sur dylan-dev.me](https://www.dylan-dev.me/projects/asmi-transfert) — par [Clovis Ahouandjinou](https://www.dylan-dev.me), développeur front-end freelance.
+
 ## 🚀 Stack Technique
 - Next.js 14 (App Router)
 - TypeScript
