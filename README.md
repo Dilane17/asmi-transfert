@@ -4,6 +4,8 @@
 
 📖 Étude de cas détaillée : [ASMI Transfert sur dylan-dev.me](https://www.dylan-dev.me/projects/asmi-transfert) — par [Clovis Ahouandjinou](https://www.dylan-dev.me), développeur front-end freelance.
 
+💼 Besoin d'un site similaire ? [Développeur Next.js freelance](https://www.dylan-dev.me/services/developpeur-nextjs-freelance-europe-afrique) · [Création de site vitrine et landing page](https://www.dylan-dev.me/services/creation-site-vitrine-landing-page-freelance) · [Blog](https://www.dylan-dev.me/blog)
+
 ## 🚀 Stack Technique
 - Next.js 14 (App Router)
 - TypeScript
